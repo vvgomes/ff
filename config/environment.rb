@@ -2,4 +2,4 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-Pug::Application.initialize!
+FF::Application.initialize!

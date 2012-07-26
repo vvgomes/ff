@@ -1,4 +1,4 @@
-Pug::Application.routes.draw do
+FF::Application.routes.draw do
   resources :users
 
   # The priority is based upon order of creation:
