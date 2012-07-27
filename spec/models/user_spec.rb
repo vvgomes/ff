@@ -1,6 +1,5 @@
+require 'spec_helper'
+
 describe User do
-  it 'should validate its name' do
-    User.new.should_not be_valid
-    User.new(:name => 'Jairo').should be_valid
-  end
+  pending "add some examples to (or delete) #{__FILE__}"
 end
