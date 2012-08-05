@@ -1,4 +1,6 @@
 FF::Application.routes.draw do
+  resources :accomplishments
+
   resources :users
 
   # The priority is based upon order of creation:
