@@ -10,8 +10,12 @@ html
     = javascript_include_tag 'application'
     = csrf_meta_tags
   body
-    head
-      a class="brand" href="/" Fast Feedback
+    p.notice
+      = notice
+    p.alert
+      = alert
+    header
+      a.brand href="/" Fast Feedback
     article
       = yield
     footer

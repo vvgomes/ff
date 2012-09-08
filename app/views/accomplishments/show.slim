@@ -1,4 +1,4 @@
-p id="notice"
+p#notice
   = notice
 p
   strong
@@ -9,9 +9,9 @@ p
     | Reporter:
     = @accomplishment.poster_id
 p
-  strong 
+  strong
   | Receiver:
   = @accomplishment.receiver_id
-  
+
 = link_to 'Edit', edit_accomplishment_path(@accomplishment)
-= link_to 'Back', accomplishments_path 
+= link_to 'Back', accomplishments_path
