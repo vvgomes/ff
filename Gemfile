@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'pg'
 gem 'slim'
+gem 'bourbon'
+gem 'neat'
 gem 'devise'
 gem 'gravatar_image_tag'
 
