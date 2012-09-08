@@ -1,0 +1,25 @@
+h1 Listing accomplishments
+table
+  tr
+    th Description
+    th Reporter
+    th Receiver
+    th
+    th
+    th
+- @accomplishments.each do |accomplishment|
+  tr
+    td
+      = accomplishment.description
+    td
+      = accomplishment.poster.name
+    td
+      = accomplishment.receiver.name
+    td
+      = link_to 'Show', accomplishment
+    td
+      = link_to 'Edit', edit_accomplishment_path(accomplishment)
+    td
+      = link_to 'Destroy', accomplishment, :confirm => 'Are you sure?', :method => :delete
+br
+= link_to 'New Accomplishment', new_accomplishment_path

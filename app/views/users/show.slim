@@ -1,0 +1,13 @@
+p id="notice"
+  = notice
+p
+  storng
+    | Name:
+    = @user.name
+p
+  stong
+    | Avatar:
+    = @user.avatar
+
+= link_to 'Edit', edit_user_path(@user)
+= link_to 'Back', users_path

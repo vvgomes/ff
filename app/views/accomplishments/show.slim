@@ -1,0 +1,17 @@
+p id="notice"
+  = notice
+p
+  strong
+    | Description:
+    = @accomplishment.description
+p
+  strong
+    | Reporter:
+    = @accomplishment.poster_id
+p
+  strong 
+  | Receiver:
+  = @accomplishment.receiver_id
+  
+= link_to 'Edit', edit_accomplishment_path(@accomplishment)
+= link_to 'Back', accomplishments_path 
