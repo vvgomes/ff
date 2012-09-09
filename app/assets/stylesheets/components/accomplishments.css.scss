@@ -1,0 +1,10 @@
+#new-accomplishment {
+  @include span-columns(4);
+  @include border-radius(20px);
+  background-color: rgba(black, 0.15);
+  padding: $default-padding;
+}
+
+#latest-accomplishments {
+  @include span-columns(8);
+}

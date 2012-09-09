@@ -15,7 +15,7 @@ body {
   & > article {
     @include box-flex(1);
     @include outer-container;
-    margin-top: $header-height;
+    margin-top: $header-height + $default-padding;
   }
 
   & > footer {

@@ -4,7 +4,7 @@ body {
 
   & > header {
     @include linear-gradient(rgb(174, 0, 0), rgb(224, 34, 34));
-    @include box-shadow(0 0 3px 2px #666);
+    @include box-shadow(0 0 2px 2px rgba(black, 0.3));
     padding: $default-padding;
     color: white;
     z-index: 999;

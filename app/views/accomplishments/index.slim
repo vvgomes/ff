@@ -1,13 +1,15 @@
-h1 Report New Accomplishment
-= render 'form'
+aside#new-accomplishment
+  h1 Report New Accomplishment
+  = render 'form'
 
-h1 Latest Accomplishments
-- @accomplishments.each do |acc|
-  ul
-    li
-      = gravatar_image_tag(acc.receiver.email, alt: acc.receiver.name, gravatar: {secure: true})
-      = acc.receiver.username
-      p
-        = acc.description
-      p
-        = acc.updated_at
+section#latest-accomplishments
+  h1 Latest Accomplishments
+  - @accomplishments.each do |acc|
+    ul
+      li.accomplishment itemscope='' itemtype='http://schema.org/Review'
+        div itemprop='itemReviewed' itemscope='' itemtype='http://schema.org/Person'
+          = gravatar_image_tag(acc.receiver.email, itemprop: 'image', alt: acc.receiver.username, gravatar: { secure: true })
+          span itemprop='name' = acc.receiver.username
+        p itemprop='description' = acc.description
+        time itemprop='datePublished' datetime=acc.updated_at.utc.iso8601 = time_ago_in_words acc.updated_at
+        span itemprop='author' = acc.poster.username
