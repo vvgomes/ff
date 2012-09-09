@@ -1,0 +1,24 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  @include box(vertical);
+
+  & > header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: $header-height;
+  }
+
+  & > article {
+    @include box-flex(1);
+    @include outer-container;
+    margin-top: $header-height;
+  }
+
+  & > footer {
+    @include box-flex(0);
+  }
+}
