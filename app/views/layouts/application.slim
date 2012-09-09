@@ -15,8 +15,8 @@ html
     /   = alert
 
     header
-      h1#brand
-        a href="/" Fast Feedback
+      = link_to image_tag('logo.png'), root_url, :id => 'logo'
+      = render 'layouts/identity'
     article
       = yield
 

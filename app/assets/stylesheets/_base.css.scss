@@ -6,22 +6,19 @@ body {
   @include box(vertical);
 
   & > header {
-    @include box-flex(0);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: $header-height;
   }
 
   & > article {
     @include box-flex(1);
     @include outer-container;
+    margin-top: $header-height;
   }
 
   & > footer {
     @include box-flex(0);
-  }
-}
-
-body {
-
-  & > header, & > footer {
-    // background: image-url('background.png');
   }
 }

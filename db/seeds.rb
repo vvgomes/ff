@@ -1,1 +1,1 @@
-User.create! :name => 'Administrator', :email => 'admin@admin.com', :password => 'password', :password_confirmation => 'password'
+User.create! :name => 'The Flashministrator', :email => 'admin@admin.com', :password => 'password', :password_confirmation => 'password'
