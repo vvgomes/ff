@@ -6,7 +6,7 @@ h1 Latest Accomplishments
   ul
     li
       = gravatar_image_tag(acc.receiver.email, alt: acc.receiver.name, gravatar: {secure: true})
-      = acc.receiver.name
+      = acc.receiver.username
       p
         = acc.description
       p
