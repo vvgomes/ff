@@ -1,1 +1,3 @@
-User.create! :name => 'The Flashministrator', :email => 'admin@admin.com', :password => 'password', :password_confirmation => 'password'
+User.create! :username => 'admin_username', :email => 'admin@admin.com', :password => 'password', :password_confirmation => 'password'
+User.create! :username => 'gtramontina', :email => 'guilherme.tramontina@gmail.com', :password => 'password', :password_confirmation => 'password'
+User.create! :username => 'vvgomes', :email => 'vvgomes@gmail.com', :password => 'password', :password_confirmation => 'password'
