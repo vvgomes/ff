@@ -1,0 +1,27 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  @include box(vertical);
+
+  & > header {
+    @include box-flex(0);
+  }
+
+  & > article {
+    @include box-flex(1);
+    @include outer-container;
+  }
+
+  & > footer {
+    @include box-flex(0);
+  }
+}
+
+body {
+
+  & > header, & > footer {
+    // background: image-url('background.png');
+  }
+}
