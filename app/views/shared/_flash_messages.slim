@@ -1,0 +1,4 @@
+- if flash.any?
+  #flash-messages
+    - flash.each do |level, message|
+      span class=level = message

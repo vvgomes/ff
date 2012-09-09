@@ -7,6 +7,7 @@ body {
     @include box-shadow(0 0 3px 2px #666);
     padding: $default-padding;
     color: white;
+    z-index: 999;
   }
 }
 
