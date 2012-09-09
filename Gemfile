@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 gem 'pg'
 gem 'slim'
 gem 'devise'
+gem 'gravatar_image_tag'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
