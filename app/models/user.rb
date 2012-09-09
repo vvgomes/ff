@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_presence_of :username
   validates_uniqueness_of :username
+  validates_format_of :username, with: /^[A-Za-z]+[A-Za-z0-9_]*$/
+  validates_length_of :username, :within => 1..16, :too_long => 'pick a shorter name', :too_short => 'pick a longer name'
 end
