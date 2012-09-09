@@ -1,6 +1,7 @@
 class AccomplishmentsController < ApplicationController
   def index
     @accomplishments = Accomplishment.all
+    @accomplishment = Accomplishment.new
     respond_to { |format| format.html }
   end
 

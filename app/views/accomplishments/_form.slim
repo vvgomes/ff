@@ -13,15 +13,13 @@
     = f.label :description
     br
     = f.text_area :description
+
   .field
-    = f.label :poster_id
+    = f.label :receiver
     br
-    = f.number_field :poster_id
-  .field
-    = f.label :receiver_id
-    br
-    = f.number_field :receiver_id
+    = f.text_field :receiver_id
+
+  = f.hidden_field :poster_id, value: current_user.id
+  
   .actions
     = f.submit 
-  
-  

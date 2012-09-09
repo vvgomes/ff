@@ -13,6 +13,7 @@ describe AccomplishmentsController do
 
     it { should respond_with(:success) }
     it { assigns(:accomplishments).should =~ all }
+    it { assigns(:accomplishment).should be_a_new Accomplishment }
     it { should render_template :index }
     it { should_not set_the_flash }
   end
