@@ -7,7 +7,7 @@ describe AccomplishmentsController do
     let(:all) { 2.times.map { build :accomplishment } }
 
     before do
-      Accomplishment.stub(:all).and_return all
+      Accomplishment.stub_chain(:order).with('created_at DESC').and_return all
       get :index
     end
 

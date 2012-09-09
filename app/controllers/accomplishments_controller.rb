@@ -1,6 +1,6 @@
 class AccomplishmentsController < ApplicationController
   def index
-    @accomplishments = Accomplishment.all
+    @accomplishments = Accomplishment.order('created_at DESC')
     @accomplishment = Accomplishment.new
     respond_to { |format| format.html }
   end
