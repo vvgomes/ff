@@ -8,7 +8,7 @@ class AccomplishmentsController < ApplicationController
   def create
     receiver = User.find_by_id(params[:accomplishment][:receiver_id])
     description = params[:accomplishment][:description]
-    @accomplishment = current_user.report_accomplishment_for(receiver, description)
+    @accomplishment = current_user.report_accomplishment(receiver, description)
 
     if @accomplishment.valid?
       redirect_to accomplishments_path, notice: 'Accomplishment reported!'

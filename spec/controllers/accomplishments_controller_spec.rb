@@ -40,7 +40,7 @@ describe AccomplishmentsController do
       before do
         receiver = build :user
         User.stub(:find_by_id).with(receiver_id.to_s).and_return receiver
-        controller.current_user.stub(:report_accomplishment_for).with(receiver, '').and_return invalid
+        controller.current_user.stub(:report_accomplishment).with(receiver, '').and_return invalid
         post :create, accomplishment: attrs
       end
 

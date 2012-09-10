@@ -14,13 +14,16 @@ describe User do
     user.name.should eq 'vvgomes'
   end
 
-  describe '#report_accomplishment_for' do
-    subject { guilherme.report_accomplishment_for vinicius, 'Created a cool feedback tool!' }
+  describe '#report_accomplishment' do
+    before { Accomplishment.any_instance.should_receive(:save) }
+
+    subject do
+      guilherme.report_accomplishment vinicius, 'Created a cool feedback tool!'
+    end
 
     its(:poster) { should eq guilherme }
     its(:receiver) { should eq vinicius }
     its(:description) { should eq 'Created a cool feedback tool!' }
-    it { should be_persisted }
   end
 
 end

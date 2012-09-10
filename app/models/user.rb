@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     self.name ||= self.username
   end
 
-  def report_accomplishment_for(user, description)
-    Accomplishment.new(:poster => self, :receiver => user, :description => description).tap(&:save)
+  def report_accomplishment(user, description)
+    Accomplishment.new(poster: self, receiver: user, description: description).tap(&:save)
   end
 end
