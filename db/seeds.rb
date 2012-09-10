@@ -1,3 +1,3 @@
-User.create! :username => 'admin_username', :email => 'admin@admin.com', :password => 'password', :password_confirmation => 'password'
-User.create! :username => 'gtramontina', :email => 'guilherme.tramontina@gmail.com', :password => 'password', :password_confirmation => 'password'
-User.create! :username => 'vvgomes', :email => 'vvgomes@gmail.com', :password => 'password', :password_confirmation => 'password'
+User.new(email: 'admin@admin.com', username: 'admin').save
+User.new(email: 'guilherme.tramontina@gmail.com', username: 'gtramont').save
+User.new(email: 'vinicius.vieira.gomes@gmail.com', username: 'vgomes').save
