@@ -1,6 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Averia+Serif+Libre:400,700);
+
 body {
   background: image-url('body.png');
-  font-weight: 100;
+  font-family: 'Averia Serif Libre';
 
   & > header {
     @include linear-gradient(rgb(174, 0, 0), rgb(224, 34, 34));
@@ -8,6 +10,10 @@ body {
     padding: $default-padding;
     color: white;
     z-index: 999;
+  }
+
+  & > article {
+    padding: 5 * $default-padding;
   }
 }
 

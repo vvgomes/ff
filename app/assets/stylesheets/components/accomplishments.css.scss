@@ -1,10 +1,72 @@
 #new-accomplishment {
   @include span-columns(4);
-  @include border-radius(20px);
+  @include border-radius($default-padding);
   background-color: rgba(black, 0.15);
   padding: $default-padding;
+
 }
 
 #latest-accomplishments {
+  $avatar-size: 60px;
+
   @include span-columns(8);
+
+  h1 {
+    font-size: 25px;
+    margin: $default-padding 0;
+  }
+
+  .accomplishment {
+    margin-bottom: 4 * $default-padding;
+    padding: 2 * $default-padding;
+    border-radius: 2 * $default-padding;
+    background: rgba(black, 0.1);
+    position: relative;
+    @include box-shadow(
+      0 2px 6px rgba(0,0,0,0.5),
+      inset 0 1px rgba(white, 0.3),
+      inset 0 10px rgba(white, 0.2),
+      inset 0 10px 20px rgba(white, 0.25),
+      inset 0 -15px 30px rgba(black, 0.2));
+
+    &:hover {
+      background: rgba(black, 0.13);
+    }
+
+    [itemprop=name] {
+      font-size: 18px;
+      //font-weight: 100;
+    }
+
+    [itemprop=description] {
+      color: #333;
+      font-size: 14px;
+      line-height: 1.3em;
+      margin-left: $avatar-size + $default-padding;
+      margin-bottom: $default-padding;
+    }
+
+    [itemprop=image] {
+      @include border-radius($default-padding);
+      @include box-shadow(
+        -1px -1px 0 rgba(black, 0.3),
+        0px 1px 0 white);
+      display: inline-block;
+      position: relative;
+      width: $avatar-size;
+      height: $avatar-size;
+      float: left;
+      margin-right: $default-padding;
+    }
+
+    .info {
+      display: block;
+      text-align: right;
+      line-height: 1em;
+      color: #666;
+      font-family: 'Helvetica Neue';
+      font-size: 11px;
+      text-shadow: 1px 1px 0 rgba(white, 0.5);
+    }
+  }
 }

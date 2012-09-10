@@ -4,12 +4,14 @@ aside#new-accomplishment
 
 section#latest-accomplishments
   h1 Latest Accomplishments
-  - @accomplishments.each do |acc|
-    ul
+  ul
+    - @accomplishments.each do |acc|
       li.accomplishment itemscope='' itemtype='http://schema.org/Review'
         div itemprop='itemReviewed' itemscope='' itemtype='http://schema.org/Person'
           = gravatar_image_tag(acc.receiver.email, itemprop: 'image', alt: acc.receiver.username, gravatar: { secure: true })
           span itemprop='name' = acc.receiver.username
-        p itemprop='description' = acc.description
-        time itemprop='datePublished' datetime=acc.updated_at.utc.iso8601 = time_ago_in_words acc.updated_at
-        span itemprop='author' = acc.poster.username
+        p itemprop='description' = truncate acc.description, length: 310
+        p.info
+          span itemprop='author' = acc.poster.username
+          ',
+          time itemprop='datePublished' datetime=acc.updated_at.utc.iso8601 = "#{time_ago_in_words(acc.updated_at)} ago"
