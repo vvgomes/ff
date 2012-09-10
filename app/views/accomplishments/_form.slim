@@ -1,5 +1,6 @@
 = semantic_form_for(@accomplishment) do |f|
-  = f.inputs
+  = f.input :description
+  = f.input :receiver
   = f.actions
   / - if @accomplishment.errors.any?
   /   #error_explanation

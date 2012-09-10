@@ -1,6 +1,6 @@
 describe AccomplishmentsController do
   let(:user) { create :user }
-  
+
   before { sign_in user }
 
   describe '#index' do
@@ -21,16 +21,33 @@ describe AccomplishmentsController do
   describe '#create' do
     let(:poster_id) { user.id }
     let(:receiver_id) { create(:user).id }
-    let(:attrs) do
-      attributes_for(:accomplishment).merge({
-        poster_id: poster_id, receiver_id: receiver_id
-      })
+
+    context 'a valid accomplishment' do
+      let(:attrs) { attributes_for(:accomplishment, :receiver_id => receiver_id) }
+      before { post :create, accomplishment: attrs }
+
+      it { should respond_with(302) }
+      it { should redirect_to accomplishments_path }
+      it { should set_the_flash.to('Accomplishment reported!') }
     end
 
-    before { post :create, accomplishment: attrs }
+    context 'an invalid accomplishment' do
+      let(:invalid) { stub(:valid? => false) }
+      let(:attrs) do
+        attributes_for(:accomplishment, receiver_id: receiver_id, description: '')
+      end
 
-    it { should respond_with(302) }
-    it { should redirect_to accomplishments_path }
-    it { should set_the_flash.to('Accomplishment reported!') }
+      before do
+        receiver = build :user
+        User.stub(:find_by_id).with(receiver_id.to_s).and_return receiver
+        controller.current_user.stub(:report_accomplishment_for).with(receiver, '').and_return invalid
+        post :create, accomplishment: attrs
+      end
+
+      it { should render_template 'new' }
+      it { assigns(:accomplishment).should eq invalid }
+    end
+
+
   end
 end

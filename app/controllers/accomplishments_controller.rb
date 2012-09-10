@@ -6,13 +6,14 @@ class AccomplishmentsController < ApplicationController
   end
 
   def create
-    @accomplishment = Accomplishment.new(params[:accomplishment])
-    respond_to do |format|
-      if @accomplishment.save
-        format.html { redirect_to accomplishments_path, notice: 'Accomplishment reported!' }
-      else
-        format.html { render action: 'new' }
-      end
+    receiver = User.find_by_id(params[:accomplishment][:receiver_id])
+    description = params[:accomplishment][:description]
+    @accomplishment = current_user.report_accomplishment_for(receiver, description)
+
+    if @accomplishment.valid?
+      redirect_to accomplishments_path, notice: 'Accomplishment reported!'
+    else
+      render action: 'new'
     end
-  end  
+  end
 end
