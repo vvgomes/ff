@@ -1,9 +1,8 @@
 FactoryGirl.define do
 
   factory :user do
-    username { Faker::Internet.user_name.gsub(/[^0-9A-Za-z]/, '') }
+    username { Faker::Internet.user_name }
     email { Faker::Internet.email }
-    password { Faker::Name.name }
   end
 
   factory :accomplishment do

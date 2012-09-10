@@ -6,6 +6,7 @@ gem 'slim'
 gem 'bourbon'
 gem 'neat'
 gem 'devise'
+gem 'devise_cas_authenticatable'
 gem 'gravatar_image_tag'
 gem 'formtastic'
 
