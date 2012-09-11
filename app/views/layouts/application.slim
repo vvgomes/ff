@@ -9,14 +9,13 @@ html
     = javascript_include_tag 'application'
     = csrf_meta_tags
   body
-    h1 IT WORKS!
-    /= render 'shared/flash_messages'
+    = render 'shared/flash_messages'
 
-    /header
-    /  = link_to image_tag('logo.png'), root_url, :id => 'logo'
-    /  = render 'shared/identity'
-    /article
-    /  = yield
+    header
+      = link_to image_tag('logo.png'), root_url, :id => 'logo'
+      = render 'shared/identity'
+    article
+       = yield
 
-    /footer
-    /  p &copy; foo 2012
+    footer
+      p &copy; foo 2012
