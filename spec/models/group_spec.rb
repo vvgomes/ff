@@ -1,3 +1,0 @@
-describe Group do
-  
-end
