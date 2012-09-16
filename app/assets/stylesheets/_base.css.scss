@@ -1,34 +1,14 @@
+@include font-face(Lobster, 'Lobster 1.4');
+@include font-face(LeagueGothic, 'leaguegothic-regular-webfont');
+
 html, body {
   height: 100%;
 }
 
 body {
-  @include box(vertical);
-
-  & > header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: $header-height;
-  }
 
   & > article {
-    @include box-flex(1);
     @include outer-container;
-    margin-top: $header-height;
   }
 
-  & > footer {
-    @include box-flex(0);
-  }
-}
-
-// -[ MIXINS ]------------------------------------------------------------------
-@mixin keyframes($name) {
-  @-moz-keyframes #{$name} { @content; }
-  @-webkit-keyframes #{$name} { @content; }
-  @-o-keyframes #{$name} { @content; }
-  @-ms-keyframes #{$name} { @content; }
-  @-khtml-keyframes #{$name} { @content; }
-  @keyframes #{$name} { @content; }
 }

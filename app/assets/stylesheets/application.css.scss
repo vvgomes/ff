@@ -1,8 +1,9 @@
 /*= require_self */
-@import "reset";
-@import "bourbon";
-@import "variables";
-@import "neat";
+@import 'reset';
+@import 'bourbon';
+@import 'variables';
+@import 'neat';
+@import 'mixins';
 
-@import "base";
-@import "components/*";
+@import 'base';
+@import 'components/*';

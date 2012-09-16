@@ -1,23 +1,76 @@
-@import url(http://fonts.googleapis.com/css?family=Averia+Serif+Libre:400,700);
+
 
 body {
   background: image-url('body.png');
-  font-family: 'Averia Serif Libre';
-
-  & > header {
-    @include linear-gradient(rgb(174, 0, 0), rgb(224, 34, 34));
-    @include box-shadow(0 0 2px 2px rgba(black, 0.3));
-    padding: $default-padding;
-    color: white;
-    z-index: 999;
-  }
 
   & > article {
-    padding: 5 * $default-padding;
+    $glass-padding: 15px;
+    margin-top: $glass-padding;
+    margin-bottom: $glass-padding;
+    position: relative;
+    padding: 10px;
+    border: solid 1px #d8cea3;
+    @include stripped-background($color-cream);
+    @include box-shadow(
+      0 0 0 2px #f8eecf,
+      0 0 0 3px white,
+      0 0 0 4px #403728,
+      0 0 5px 4px rgba(black, .25)
+    );
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: -($glass-padding);
+      left: -($glass-padding);
+      right: -($glass-padding);
+      bottom: -($glass-padding);
+      background-color: rgba(#59554D, 0.5);
+      border: 1px solid rgba(white, 0.2);
+      @include box-shadow(0 0 0 1px #26221A, -3px 4px rgba(46,41,30,.5));
+      border-radius: 2px;
+    }
+  }
+
+  & > header {
+    text-align: center;
   }
 }
 
 #logo {
-  margin:0px auto;
-  width: 50px;
+  font-family: $header-font;
+  @include ribbon($color-pink);
+  font-size: 55px;
+  line-height: 1em;
+  color: #dfdbc0;
+  text-decoration: none;
+  text-shadow: 0 0 4px rgba(black, 0.5);
+  border-radius: 0 0 3px 3px;
+  border-top: none;
+  margin-top: 0;
+  margin-bottom: 20px;
+
+  &:before, &:after {
+    content: "\2605";
+    font-size: 20px;
+    line-height: 1em;
+    margin: 15px;
+    vertical-align: middle;
+  }
+}
+
+h1 {
+  @include ribbon($color-green, bottom-left);
+
+  font-size: 20px;
+  font-family: $ribbon-font;
+  display: inline-block;
+  color: white;
+  text-transform: uppercase;
+  text-shadow: 1px 2px 0 rgba(black, 0.24);
+
+  margin-bottom: 20px;
+  margin-left: -35px;
 }
