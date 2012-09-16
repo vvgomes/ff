@@ -3,13 +3,12 @@ class User < ActiveRecord::Base
   has_many :accomplishments, :foreign_key => 'receiver_id', :class_name => 'Accomplishment'
 
   validates_presence_of :username
-  attr_accessible :username, :email, :name
+  attr_accessible :username
 
   devise :cas_authenticatable, :registerable, :trackable
 
-  def initialize(attributes=nil)
-    super(attributes)
-    self.name ||= self.username
+  def email
+    "#{username}@thoughtworks.com"
   end
 
   def report_accomplishment(user, description)

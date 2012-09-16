@@ -47,7 +47,5 @@ describe AccomplishmentsController do
       it { should render_template 'new' }
       it { assigns(:accomplishment).should eq invalid }
     end
-
-
   end
 end

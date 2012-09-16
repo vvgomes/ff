@@ -2,7 +2,6 @@ FactoryGirl.define do
 
   factory :user do
     username { Faker::Internet.user_name }
-    email { Faker::Internet.email }
   end
 
   factory :accomplishment do
@@ -11,4 +10,7 @@ FactoryGirl.define do
     description { Faker::Lorem.paragraph }
   end
 
+  factory :group do
+    name { Faker::Name.name }
+  end
 end
