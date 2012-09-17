@@ -1,5 +1,4 @@
-= semantic_form_for(@accomplishment) do |f|
-  = f.input :description
-  = f.input :receiver, :member_label => :username
-  = f.input :group
-  = f.actions
+= form_for(@accomplishment) do |f|
+  p Congratulate #{f.select :receiver, options_from_collection_for_select(current_user.peers, :id, :username), :include_blank => 'your peer'} for:
+  = f.text_area :description, :placeholder => '... doing something awesome!'
+  p #{f.select :group, options_from_collection_for_select(Group.all, :id, :name), :include_blank => 'where?'} #{f.submit}

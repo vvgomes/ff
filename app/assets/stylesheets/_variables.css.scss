@@ -5,4 +5,8 @@ $ribbon-font: 'LeagueGothic';
 
 $color-pink: #E36765;
 $color-cream: #F8EECF;
+$color-dark-cream: #D8CEA3;
+$color-light-cream: lighten($color-cream, 8%);
+$color-sand: #423E34;
+$color-dark-sand: darken($color-sand, 20%);
 $color-green: #7C9464;

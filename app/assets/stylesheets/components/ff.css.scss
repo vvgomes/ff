@@ -1,15 +1,16 @@
-
-
 body {
   background: image-url('body.png');
+  font-family: 'DroidSerif';
+  color: $color-dark-sand;
 
   & > article {
+    color: $color-sand;
     $glass-padding: 15px;
     margin-top: $glass-padding;
     margin-bottom: $glass-padding;
     position: relative;
     padding: 10px;
-    border: solid 1px #d8cea3;
+    border: solid 1px $color-dark-cream;
     @include stripped-background($color-cream);
     @include box-shadow(
       0 0 0 2px #f8eecf,
@@ -36,6 +37,12 @@ body {
 
   & > header {
     text-align: center;
+  }
+
+  & > footer {
+    font-size: 11px;
+    text-align: center;
+    text-shadow: 1px 1px 0 rgba(white, 0.2);
   }
 }
 
@@ -73,4 +80,12 @@ h1 {
 
   margin-bottom: 20px;
   margin-left: -35px;
+}
+
+#{$all-text-inputs}, textarea {
+  resize: none;
+  outline: none;
+  border-radius: 3px;
+  background-color: rgba($color-light-cream, 0.6);
+  border: 1px solid $color-dark-cream;
 }
