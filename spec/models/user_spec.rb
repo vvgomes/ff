@@ -1,7 +1,8 @@
 describe User do
   it { should have_many :accomplishments }
   it { should have_many :posts }
-  #it { should have_many :groups }
+  it { should have_and_belong_to_many :groups }
+  
   it { should validate_presence_of :username }
   it { should allow_mass_assignment_of :username }
 
