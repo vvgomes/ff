@@ -13,11 +13,15 @@ class User < ActiveRecord::Base
   end
 
   def report_accomplishment(description, receiver, group)
-    Accomplishment.new({ 
-      :description => description, 
+    Accomplishment.new({
+      :description => description,
       :poster => self,
       :receiver => receiver,
       :group => group
     }).tap(&:save)
+  end
+
+  def peers
+    User.all - [self]
   end
 end

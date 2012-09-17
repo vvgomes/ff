@@ -24,4 +24,17 @@ describe User do
     its(:group) { should == gap }
     its(:description) { should == 'fixed build' }
   end
+
+  describe '#peers' do
+    let(:vinicius) { create :user }
+    let(:guilherme) { create :user }
+    let(:mathias) { create :user }
+    before { User.stub(:all).and_return [vinicius, guilherme, mathias] }
+
+    it 'should give all users but itself' do
+      vinicius.peers.should =~ [guilherme, mathias]
+      guilherme.peers.should =~ [vinicius, mathias]
+      mathias.peers.should =~ [guilherme, vinicius]
+    end
+  end
 end
