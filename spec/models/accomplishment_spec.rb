@@ -1,7 +1,20 @@
 describe Accomplishment do
+  it { should belong_to :poster }
+  it { should belong_to :receiver }
+  it { should belong_to :group }
+  
+  it { should allow_mass_assignment_of :description }
+  it { should allow_mass_assignment_of :receiver }
+  it { should allow_mass_assignment_of :poster }
+  it { should allow_mass_assignment_of :group }
+  it { should allow_mass_assignment_of :receiver_id }
+  it { should allow_mass_assignment_of :poster_id }
+  it { should allow_mass_assignment_of :group_id }
+  
   it { should validate_presence_of :description }
   it { should validate_presence_of :receiver }
   it { should validate_presence_of :poster }
+  it { should validate_presence_of :group }
 
   context 'when the poster and the receiver are the same person' do
     let(:cheater) { build :user }

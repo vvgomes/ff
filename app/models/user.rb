@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
   has_many :posts, :foreign_key => 'poster_id', :class_name => 'Accomplishment'
   has_many :accomplishments, :foreign_key => 'receiver_id', :class_name => 'Accomplishment'
+  #has_many :groups
 
-  validates_presence_of :username
   attr_accessible :username
+  validates_presence_of :username
 
   devise :cas_authenticatable, :registerable, :trackable
 
@@ -11,7 +12,12 @@ class User < ActiveRecord::Base
     "#{username}@thoughtworks.com"
   end
 
-  def report_accomplishment(user, description)
-    Accomplishment.new(poster: self, receiver: user, description: description).tap(&:save)
+  def report_accomplishment(description, receiver, group)
+    Accomplishment.new({ 
+      :description => description, 
+      :poster => self,
+      :receiver => receiver,
+      :group => group
+    }).tap(&:save)
   end
 end

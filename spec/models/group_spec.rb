@@ -1,3 +1,3 @@
 describe Group do
-  
+    
 end

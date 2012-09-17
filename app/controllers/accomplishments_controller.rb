@@ -6,10 +6,11 @@ class AccomplishmentsController < ApplicationController
   end
 
   def create
-    receiver = User.find_by_id(params[:accomplishment][:receiver_id])
-    description = params[:accomplishment][:description]
-    @accomplishment = current_user.report_accomplishment(receiver, description)
-
+    raw = params[:accomplishment]
+    description = raw[:description]
+    receiver = User.find_by_id(raw[:receiver_id])
+    group = Group.find_by_id(raw[:group_id])
+    @accomplishment = current_user.report_accomplishment(description, receiver, group)
     if @accomplishment.valid?
       redirect_to accomplishments_path, notice: 'Accomplishment reported!'
     else
