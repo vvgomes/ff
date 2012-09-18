@@ -2,7 +2,7 @@ describe User do
   it { should have_many :accomplishments }
   it { should have_many :posts }
   it { should have_and_belong_to_many :groups }
-  
+
   it { should validate_presence_of :username }
   it { should allow_mass_assignment_of :username }
 
@@ -26,9 +26,9 @@ describe User do
   end
 
   describe '#peers' do
-    let(:vinicius) { create :user }
-    let(:guilherme) { create :user }
-    let(:mathias) { create :user }
+    let(:vinicius) { build :user }
+    let(:guilherme) { build :user }
+    let(:mathias) { build :user }
     before { User.stub(:all).and_return [vinicius, guilherme, mathias] }
 
     it 'should give all users but itself' do
