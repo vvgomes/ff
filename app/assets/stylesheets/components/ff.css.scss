@@ -1,17 +1,17 @@
 body {
   background: image-url('body.png');
-  font-family: 'DroidSerif';
-  color: $color-dark-sand;
+  font-family: $body-font-family;
+  color: $body-font-color;
 
   & > article {
-    color: $color-sand;
+    color: $article-font-color;
     $glass-padding: 15px;
     margin-top: $glass-padding;
     margin-bottom: $glass-padding;
     position: relative;
     padding: 10px;
-    border: solid 1px $color-dark-cream;
-    @include stripped-background($color-cream);
+    border: solid 1px $article-border-color;
+    @include stripped-background($article-background-color);
     @include box-shadow(
       0 0 0 2px #f8eecf,
       0 0 0 3px white,
@@ -47,7 +47,7 @@ body {
 }
 
 #logo {
-  font-family: $header-font;
+  font-family: $header-font-family;
   @include ribbon($color-pink);
   font-size: 55px;
   line-height: 1em;
@@ -72,7 +72,7 @@ h1 {
   @include ribbon($color-green, bottom-left);
 
   font-size: 20px;
-  font-family: $ribbon-font;
+  font-family: $ribbon-font-family;
   display: inline-block;
   color: white;
   text-transform: uppercase;
@@ -85,7 +85,8 @@ h1 {
 #{$all-text-inputs}, textarea {
   resize: none;
   outline: none;
-  border-radius: 3px;
-  background-color: rgba($color-light-cream, 0.6);
-  border: 1px solid $color-dark-cream;
+}
+
+input[type=submit] {
+  @include button($color-pink);
 }

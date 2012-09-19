@@ -1,12 +1,17 @@
 $max-width: 600px;
 
-$header-font: 'Lobster';
-$ribbon-font: 'LeagueGothic';
+// FONTS --
+$header-font-family: 'Lobster';
+$ribbon-font-family: 'LeagueGothic';
+$body-font-family: 'DroidSerif';
 
+// COLORS --
+$body-font-color: #090807;
+
+$article-font-color: #423E34;
+$article-border-color: #D8CEA3;
+$article-background-color: #F8EECF;
+
+// -- shades
 $color-pink: #E36765;
-$color-cream: #F8EECF;
-$color-dark-cream: #D8CEA3;
-$color-light-cream: lighten($color-cream, 8%);
-$color-sand: #423E34;
-$color-dark-sand: darken($color-sand, 20%);
 $color-green: #7C9464;

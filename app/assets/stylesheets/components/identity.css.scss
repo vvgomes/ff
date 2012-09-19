@@ -1,15 +1,15 @@
 #identity {
   @include outer-container;
   text-align: right;
-  color: $color-dark-sand;
+  color: $body-font-color;
   font-size: 10px;
   text-transform: uppercase;
   text-shadow: 1px 1px 0 rgba(white, 0.2);
   a {
-    color: $color-dark-sand;
+    color: $body-font-color;
     text-decoration: none;
     &:hover {
-      color: $color-cream;
+      color: $article-background-color;
       text-shadow: none;
     }
   }
