@@ -7,6 +7,25 @@
   @keyframes #{$name} { @content; }
 }
 
+@mixin glass-base($padding) {
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: -($padding);
+    left: -($padding);
+    right: -($padding);
+    bottom: -($padding);
+    background-color: rgba(#59554D, 0.5);
+    border: 1px solid rgba(white, 0.2);
+    @include box-shadow(0 0 0 1px #26221A, -3px 4px rgba(46,41,30,.5));
+    border-radius: 2px;
+  }
+};
+
 @mixin stripped-background($color) {
   background-color: $color;
   @include background-image(linear-gradient(0deg, transparent 2px, rgba(black, .04) 1px));
@@ -60,23 +79,26 @@
   font-size: 16px;
   padding: 5px 15px;
   text-shadow: 1px 2px 0 rgba(black, 0.24);
-  box-shadow:
+  @include box-shadow(
     inset 0 0 0 1px rgba(white, 0.5),
-    0 2px 2px rgba(black, 0.3);
+    0 2px 2px rgba(black, 0.3)
+  );
   text-transform: uppercase;
   cursor: pointer;
 
   &:hover {
     top: 1px;
-    box-shadow:
+    @include box-shadow(
       inset 0 0 0 1px rgba(white, 0.5),
-      0 1px 2px rgba(black, 0.4);
+      0 1px 2px rgba(black, 0.4)
+    );
   };
 
   &:active {
     top: 2px;
-    box-shadow:
+    @include box-shadow(
       inset 0 0 0 1px rgba(white, 0.5),
-      0 0 2px rgba(black, 0.5);
+      0 0 2px rgba(black, 0.5)
+    );
   }
 }

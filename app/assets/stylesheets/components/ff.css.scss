@@ -1,6 +1,7 @@
 body {
   background: image-url('body.png');
   font-family: $body-font-family;
+  font-size: 13px;
   color: $body-font-color;
 
   & > article {
@@ -8,7 +9,6 @@ body {
     $glass-padding: 15px;
     margin-top: $glass-padding;
     margin-bottom: $glass-padding;
-    position: relative;
     padding: 10px;
     border: solid 1px $article-border-color;
     @include stripped-background($article-background-color);
@@ -19,19 +19,20 @@ body {
       0 0 5px 4px rgba(black, .25)
     );
 
-    &:before {
-      content: "";
-      display: block;
-      position: absolute;
-      z-index: -1;
-      top: -($glass-padding);
-      left: -($glass-padding);
-      right: -($glass-padding);
-      bottom: -($glass-padding);
-      background-color: rgba(#59554D, 0.5);
-      border: 1px solid rgba(white, 0.2);
-      @include box-shadow(0 0 0 1px #26221A, -3px 4px rgba(46,41,30,.5));
-      border-radius: 2px;
+    @include glass-base($glass-padding);
+
+    h1 {
+      @include ribbon($color-green, bottom-left);
+
+      font-size: 20px;
+      font-family: $ribbon-font-family;
+      display: inline-block;
+      color: white;
+      text-transform: uppercase;
+      text-shadow: 1px 2px 0 rgba(black, 0.24);
+
+      margin-bottom: 20px;
+      margin-left: -35px;
     }
   }
 
@@ -66,20 +67,6 @@ body {
     margin: 15px;
     vertical-align: middle;
   }
-}
-
-h1 {
-  @include ribbon($color-green, bottom-left);
-
-  font-size: 20px;
-  font-family: $ribbon-font-family;
-  display: inline-block;
-  color: white;
-  text-transform: uppercase;
-  text-shadow: 1px 2px 0 rgba(black, 0.24);
-
-  margin-bottom: 20px;
-  margin-left: -35px;
 }
 
 #{$all-text-inputs}, textarea {

@@ -14,6 +14,10 @@ html
     header
       = link_to 'Fast Feedback', root_url, :id => 'logo'
       = render 'shared/identity'
+
+    aside#new-accomplishment
+      = render 'form'
+
     article
       = yield
 
