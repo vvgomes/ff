@@ -12,4 +12,8 @@ class Accomplishment < ActiveRecord::Base
   def poster_cannot_be_receiver
     errors.add(:receiver, "can't be yourself") if poster == receiver
   end
+
+  def self.latest
+    order 'created_at DESC'
+  end
 end

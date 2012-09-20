@@ -21,4 +21,11 @@ describe Accomplishment do
     subject { build :accomplishment, poster: cheater, receiver: cheater, description: 'oh' }
     it { should_not be_valid }
   end
+
+  describe '.latest' do
+    it 'should order by newests first' do
+      Accomplishment.should_receive(:order).with('created_at DESC')
+      Accomplishment.latest 
+    end
+  end
 end
