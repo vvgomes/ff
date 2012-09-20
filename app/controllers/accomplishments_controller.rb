@@ -14,7 +14,8 @@ class AccomplishmentsController < ApplicationController
     if @accomplishment.valid?
       redirect_to accomplishments_path, notice: 'Accomplishment reported!'
     else
-      render action: 'new'
+      @accomplishments = Accomplishment.latest
+      render action: 'index'
     end
   end
 end

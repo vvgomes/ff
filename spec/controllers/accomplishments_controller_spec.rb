@@ -38,7 +38,7 @@ describe AccomplishmentsController do
       let(:attrs) do
         {description: '', receiver_id: receiver_id, group_id: group_id}
       end
-      it { should render_template 'new' }
+      it { should render_template 'index' }
       it { assigns(:accomplishment).should_not be_valid }
     end
   end
