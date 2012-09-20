@@ -1,10 +1,12 @@
 body {
-  background: image-url('body.png');
+  background: image-url('body.png') fixed;
   font-family: $body-font-family;
   font-size: 13px;
   color: $body-font-color;
 
   & > article {
+    @include outer-container;
+
     color: $article-font-color;
     $glass-padding: 15px;
     margin-top: $glass-padding;

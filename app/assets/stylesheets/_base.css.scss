@@ -5,18 +5,3 @@
 html, body {
   height: 100%;
 }
-
-body {
-
-  & > article {
-    @include outer-container;
-  }
-
-  #new-accomplishment {
-    $width: $max-width / 2;
-    width: $width;
-    position: fixed;
-    left: 50%;
-    margin-left: -$max-width;
-  }
-}

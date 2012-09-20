@@ -1,8 +1,12 @@
 #new-accomplishment {
   @include glass-base(10px);
+  $width: $max-width / 2;
   color: $article-background-color;
-  padding-right: 25px;
   margin-top: 100px;
+  width: $width;
+  position: fixed;
+  left: 50%;
+  margin-left: -$max-width - 24px;
 
   #accomplishment_description {
     width: 100%;
@@ -19,14 +23,18 @@
   }
 
   #accomplishment_group_id {
-    width: 125px;
+    width: 90px;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 
   #accomplishment_receiver_id {
-    width: 80px;
+    width: 90px;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 
-  input[name=submit] {
+  input[type=submit] {
     float: right;
   }
 
