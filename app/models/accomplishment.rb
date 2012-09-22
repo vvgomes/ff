@@ -7,6 +7,7 @@ class Accomplishment < ActiveRecord::Base
   attr_accessible :poster_id, :receiver_id, :group_id
 
   validates_presence_of :description, :poster, :receiver, :group
+  validates_length_of :description, :maximum => 140
   validate :poster_cannot_be_receiver
  
   def poster_cannot_be_receiver

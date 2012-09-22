@@ -84,7 +84,10 @@
     }
 
     [itemprop=description] {
-      margin-right: 10px;
+      margin-right: 15px;
+      margin-left: 60px;
+      word-wrap: break-word;
+      min-height: 40px;
       line-height: 1.4em;
     }
     [itemprop=datePublished] {
