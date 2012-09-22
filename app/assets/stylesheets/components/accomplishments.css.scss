@@ -54,3 +54,75 @@
     }
   }
 }
+
+#latest-accomplishments {
+  .accomplishment {
+    background: url($accomplishment-pattern);
+    box-shadow: 0 2px rgba(5,3,5,.1), inset 0 0 0 1px #fff;
+    border: solid 1px #d8cea3;
+    margin-bottom: 10px;
+    padding: 10px;
+    position: relative;
+
+    [itemprop=image] {
+      border-radius: 5px;
+      @include box-shadow(
+        1px 1px 1px rgba(white, 0.5),
+        -1px -1px 1px rgba(black, 0.5)
+      );
+      vertical-align: top;
+      margin-right: 10px;
+      width: 50px;
+      height: 50px;
+      float: left;
+    }
+
+    [itemprop=name] {
+      font-family: $ribbon-font-family;
+      font-size: 25px;
+      text-shadow: 1px 1px 1px rgba(white, 0.9);
+    }
+
+    [itemprop=description] {
+      margin-right: 10px;
+      line-height: 1.4em;
+    }
+    [itemprop=datePublished] {
+      @include ribbon($color-green, top-right);
+      font-family: $ribbon-font-family;
+      color: rgba(black, 0.3);
+      text-shadow: 1px 1px 1px rgba(white, 0.2);
+      text-transform: uppercase;
+
+      position: absolute;
+      float: right;
+      padding: 5px;
+      right: -42px;
+      top: 15px;
+      height: 43px;
+      .day {
+        font-size: 34px;
+        line-height: 1em;
+      }
+
+      .month {
+        position: absolute;
+        line-height: 1em;
+        font-size: 20px;
+        vertical-align: top;
+      }
+
+      .year {
+        display: inline-block;
+        line-height: 1em;
+      }
+    }
+
+    [itemprop=author] {
+      text-align: right;
+      font-size: 10px;
+      line-height: 1em;
+      text-shadow: 1px 1px 1px rgba(white, 0.5);
+    }
+  }
+}
