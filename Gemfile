@@ -9,6 +9,8 @@ gem 'devise'
 gem 'devise_cas_authenticatable'
 gem 'gravatar_image_tag'
 gem 'formtastic'
+gem 'activeadmin'
+gem 'meta_search', '>= 1.1.0.pre'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
