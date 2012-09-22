@@ -1,4 +1,4 @@
 = form_for(@accomplishment) do |f|
   p Congratulate #{f.collection_select :receiver_id, current_user.peers, :id, :username, { :prompt => '[your peer]' }, { :required => true } } for:
   = f.text_area :description, :placeholder => 'doing something awesome…', :autofocus => true, :required => true, :maxlength => Accomplishment.validators_on(:description)[1].options[:maximum]
-  p #{f.collection_select :group_id, Group.all, :id, :name, { :prompt => 'Where?' }, { :required => true } } #{f.submit :value => 'Feedback it!'}
+  p #{f.collection_select :scope_id, Scope.all, :id, :name, { :prompt => 'Where?' }, { :required => true } } #{f.submit :value => 'Feedback it!'}

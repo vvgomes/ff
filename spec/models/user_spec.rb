@@ -1,7 +1,6 @@
 describe User do
   it { should have_many :accomplishments }
   it { should have_many :posts }
-  it { should have_and_belong_to_many :groups }
 
   it { should validate_presence_of :username }
   it { should allow_mass_assignment_of :username }
@@ -12,16 +11,16 @@ describe User do
   end
 
   describe '#report_accomplishment' do
-    let(:gap) { build :group }
     let(:leo) { build :user }
     let(:mathias) { build :user }
+    let(:project) { build :scope }
 
     before { Accomplishment.any_instance.should_receive(:save) }
-    subject { mathias.report_accomplishment('fixed build', leo, gap) }
+    subject { mathias.report_accomplishment('fixed build', leo, project) }
 
     its(:poster) { should == mathias }
     its(:receiver) { should == leo }
-    its(:group) { should == gap }
+    its(:scope) { should == project }
     its(:description) { should == 'fixed build' }
   end
 

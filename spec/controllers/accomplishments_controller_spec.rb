@@ -21,23 +21,29 @@ describe AccomplishmentsController do
   describe '#create' do
     let(:poster_id) { user.id }
     let(:receiver_id) { create(:user).id }
-    let(:group_id) { create(:group).id }
+    let(:scope_id) { create(:scope).id }
     
     before { post :create, accomplishment: attrs }
 
     context 'a valid accomplishment' do
-      let(:attrs) do
-        {description: 'fixed build', receiver_id: receiver_id, group_id: group_id}
-      end
+      let(:attrs) {{
+        :description => 'fixed build', 
+        :receiver_id => receiver_id, 
+        :scope_id => scope_id
+      }}
+
       it { should respond_with(302) }
       it { should redirect_to accomplishments_path }
       it { should set_the_flash.to('Accomplishment reported!') }
     end
 
     context 'an invalid accomplishment' do
-      let(:attrs) do
-        {description: '', receiver_id: receiver_id, group_id: group_id}
-      end
+      let(:attrs) {{ 
+       :description => '', 
+       :receiver_id => receiver_id, 
+       :scope_id => scope_id
+      }}
+
       it { should render_template 'index' }
       it { assigns(:accomplishment).should_not be_valid }
     end

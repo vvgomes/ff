@@ -7,11 +7,11 @@ FactoryGirl.define do
   factory :accomplishment do
     association :poster, :factory => :user
     association :receiver, :factory => :user
-    association :group, :factory => :group
+    association :scope, :factory => :scope
     description { Faker::Lorem.paragraph }
   end
 
-  factory :group do
+  factory :scope do
     name { Faker::Name.name }
   end
 end
