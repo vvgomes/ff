@@ -12,12 +12,12 @@ class User < ActiveRecord::Base
     "#{username}@thoughtworks.com"
   end
 
-  def report_accomplishment(description, receiver, group)
+  def report_accomplishment(description, receiver, scope)
     Accomplishment.new({
       :description => description,
       :poster => self,
       :receiver => receiver,
-      :group => group
+      :scope => scope
     }).tap(&:save)
   end
 

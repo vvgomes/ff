@@ -11,29 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120917011836) do
+ActiveRecord::Schema.define(:version => 20120922210946) do
 
   create_table "accomplishments", :force => true do |t|
     t.text     "description"
     t.integer  "poster_id"
     t.integer  "receiver_id"
+    t.integer  "scope_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "group_id"
   end
 
-  create_table "groups", :force => true do |t|
+  create_table "scopes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "groups_users", :force => true do |t|
-    t.integer "group_id"
-    t.integer "user_id"
-  end
-
   create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "name"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
     t.integer  "sign_in_count",      :default => 0
@@ -41,8 +38,6 @@ ActiveRecord::Schema.define(:version => 20120917011836) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "username"
-    t.string   "name"
   end
 
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
