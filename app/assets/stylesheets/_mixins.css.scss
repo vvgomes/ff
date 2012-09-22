@@ -49,24 +49,29 @@
   position: relative;
   display: inline-block;
 
-  @if $position == bottom-left {
-
-    &:before {
+  &:before {
+    @if $position == bottom-left {
       content: "";
       display: inline-block;
       position: absolute;
       left: -6px;
       bottom: -16px;
-      border-right: 15px solid darken($color, 15%);
+      border-right: 15px solid darken($color, 8%);
       border-bottom: 10px solid transparent;
+
+    } @else if $position == top-left {
+
+    } @else if $position == bottom-right {
+
+    } @else if $position == top-right {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      right: -6px;
+      top: -16px;
+      border-left: 15px solid darken($color, 8%);
+      border-top: 10px solid transparent;
     }
-
-  } @else if $position == top-left {
-
-  } @else if $position == bottom-right {
-
-  } @else if $position == top-right {
-
   }
 }
 

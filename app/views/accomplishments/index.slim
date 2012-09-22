@@ -4,10 +4,11 @@ section#latest-accomplishments
     - @accomplishments.each do |acc|
       li.accomplishment itemscope='' itemtype='http://schema.org/Review'
         div itemprop='itemReviewed' itemscope='' itemtype='http://schema.org/Person'
-          = gravatar_image_tag(acc.receiver.email, itemprop: 'image', alt: acc.receiver.username, gravatar: { secure: true })
+          = gravatar_image_tag(acc.receiver.email, itemprop:'image', alt: acc.receiver.username, gravatar: { secure: true })
           span itemprop='name' = acc.receiver.username
         p itemprop='description' = truncate acc.description, length: 310
-        p.info
-          span itemprop='author' = acc.poster.username
-          ',
-          time itemprop='datePublished' datetime=acc.updated_at.utc.iso8601 = "#{time_ago_in_words(acc.updated_at)} ago"
+        time itemprop='datePublished' datetime=acc.updated_at.utc.iso8601
+          span.day = acc.updated_at.day
+          span.month = acc.updated_at.strftime '%b'
+          span.year = acc.updated_at.year
+        p itemprop='author' = "by #{acc.poster.username}"
