@@ -1,23 +1,20 @@
 describe User do
+  subject { build :user, :username => 'leo' }
+
   it { should have_many :accomplishments }
   it { should have_many :posts }
-
   it { should validate_presence_of :username }
   it { should allow_mass_assignment_of :username }
-
-  describe '#email' do
-    subject { build :user, username: 'leo' }
-    its(:email) { should == 'leo@thoughtworks.com' }
-  end
+  its(:email) { should == 'leo@thoughtworks.com' }
 
   describe '#report_accomplishment' do
-    let(:leo) { build :user }
+    let(:leo) { build :user}
     let(:mathias) { build :user }
     let(:project) { build :scope }
 
     before { Accomplishment.any_instance.should_receive(:save) }
     subject { mathias.report_accomplishment('fixed build', leo, project) }
-
+ 
     its(:poster) { should == mathias }
     its(:receiver) { should == leo }
     its(:scope) { should == project }
@@ -25,15 +22,33 @@ describe User do
   end
 
   describe '#peers' do
-    let(:vinicius) { build :user }
-    let(:guilherme) { build :user }
+    let(:leo) { build :user}
     let(:mathias) { build :user }
-    before { User.stub(:all).and_return [vinicius, guilherme, mathias] }
+    let(:tramonta) { build :user }
+    before { User.stub(:all).and_return [leo, tramonta, mathias] }
 
     it 'should give all users but itself' do
-      vinicius.peers.should =~ [guilherme, mathias]
-      guilherme.peers.should =~ [vinicius, mathias]
-      mathias.peers.should =~ [guilherme, vinicius]
+      leo.peers.should =~ [tramonta, mathias]
+      mathias.peers.should =~ [tramonta, leo]
+      tramonta.peers.should =~ [leo, mathias]
     end
+  end
+
+  describe '#accomplishments_by_scope' do
+    let(:leo) { build :user}
+    
+    let(:project) { build :scope, :name => 'project' }
+    let(:office) { build :scope, :name => 'office' }
+
+    let(:for_project) { build :accomplishment, :scope => project }
+    let(:for_office) { build :accomplishment, :scope => office }
+    
+    before do
+      leo.accomplishments << for_project 
+      leo.accomplishments << for_office
+    end
+    
+    specify { leo.accomplishments_for(project).should have(1).elements }
+    specify { leo.accomplishments_for(office).should have(1).elements }
   end
 end

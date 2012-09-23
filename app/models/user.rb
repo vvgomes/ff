@@ -24,4 +24,8 @@ class User < ActiveRecord::Base
   def peers
     User.all - [self]
   end
+
+  def accomplishments_for scope
+    accomplishments.select{ |a| a.scope == scope }
+  end
 end
