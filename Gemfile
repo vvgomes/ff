@@ -9,6 +9,7 @@ gem 'devise'
 gem 'devise_cas_authenticatable'
 gem 'gravatar_image_tag'
 gem 'formtastic'
+gem 'acts-as-taggable-on', '~> 2.3.1'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

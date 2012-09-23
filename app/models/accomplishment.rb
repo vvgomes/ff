@@ -6,6 +6,8 @@ class Accomplishment < ActiveRecord::Base
   attr_accessible :description, :poster, :receiver, :scope
   attr_accessible :poster_id, :receiver_id, :scope_id
 
+  acts_as_taggable
+
   validates_length_of :description, :maximum => 140
   validates_presence_of :description, :poster, :receiver, :scope
   validate :poster_cannot_be_receiver
