@@ -1,0 +1,48 @@
+#messages {
+  position: absolute;
+  display: inline-block;
+  font-size: 10px;
+  top: 63px;
+  text-transform: uppercase;  
+  text-align: center;
+  width: 100%;
+  color: $article-background-color;
+  @include animation(slideDown 1s, slideUp 1s 5s);
+  @include animation-fill-mode(forwards);
+  span {
+    &.notice {
+      @include ribbon($color-green);
+      padding: 0 20px;
+      border-radius: 0 0 3px 3px
+    }
+
+    &.error {
+      @include ribbon($color-pink);
+      padding: 0 20px;
+      border-radius: 0 0 3px 3px
+    }
+  }
+
+  
+}
+
+@include keyframes(slideDown) {
+  0% {
+    @include transform(translateY(-30px));
+  }
+
+  100% {
+    @include transform(translateY(0));
+  }
+}
+
+@include keyframes(slideUp) {
+  0% {
+    @include transform(translateY(0));
+  }
+
+  100% {
+    @include transform(translateY(-30px));
+    visibility: hidden;
+  }
+}
