@@ -2,6 +2,7 @@ class AccomplishmentsController < ApplicationController
   def index
     @accomplishments = Accomplishment.latest
     @accomplishment = Accomplishment.new
+    @scopes = Scope.all
   end
 
   def create
@@ -13,6 +14,7 @@ class AccomplishmentsController < ApplicationController
     if @accomplishment.valid?
       redirect_to accomplishments_path, notice: 'Accomplishment reported!'
     else
+      @scopes = Scope.all
       @accomplishments = Accomplishment.latest
       render action: 'index'
     end

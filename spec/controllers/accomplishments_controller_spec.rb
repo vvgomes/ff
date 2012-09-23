@@ -1,7 +1,11 @@
 describe AccomplishmentsController do
   let(:user) { create :user }
+  let(:scopes) { [build(:scope)] }
 
-  before { sign_in user }
+  before do
+    sign_in user
+    Scope.stub(:all).and_return scopes
+  end
 
   describe '#index' do
     let(:all) { 2.times.map { build :accomplishment } }
@@ -14,6 +18,7 @@ describe AccomplishmentsController do
     it { should respond_with(:success) }
     it { assigns(:accomplishments).should =~ all }
     it { assigns(:accomplishment).should be_a_new Accomplishment }
+    it { assigns(:scopes).should == scopes }
     it { should render_template :index }
     it { should_not set_the_flash }
   end
@@ -46,6 +51,7 @@ describe AccomplishmentsController do
 
       it { should render_template 'index' }
       it { assigns(:accomplishment).should_not be_valid }
+      it { assigns(:scopes).should == scopes }
     end
   end
 end

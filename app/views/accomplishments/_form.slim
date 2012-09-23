@@ -5,4 +5,4 @@
   
   = f.text_area :description, :placeholder => 'doing something awesome…', :autofocus => true, :required => true, :maxlength => Accomplishment.validators_on(:description)[1].options[:maximum]
   
-  p #{f.collection_select :scope_id, Scope.all, :id, :name, { :prompt => 'Where?' }, { :required => true } } #{f.submit :value => 'Feedback it!'}
+  p #{f.collection_select :scope_id, @scopes, :id, :name, { :prompt => 'Where?' }, { :required => true } } #{f.submit :value => 'Feedback it!'}
