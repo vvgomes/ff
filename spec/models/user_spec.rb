@@ -48,7 +48,7 @@ describe User do
       leo.accomplishments << for_office
     end
     
-    specify { leo.accomplishments_for(project).should have(1).elements }
-    specify { leo.accomplishments_for(office).should have(1).elements }
+    specify { leo.accomplishments_for(project).should == [for_project]}
+    specify { leo.accomplishments_for(office).should == [for_office] }
   end
 end
