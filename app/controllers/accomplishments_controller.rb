@@ -1,6 +1,8 @@
 class AccomplishmentsController < ApplicationController
   def index
-    @accomplishments = Accomplishment.latest
+    u = params[:username]
+    @user = u ? User.find_by_username(u) : current_user
+    @accomplishments = u ? @user.latest_accomplishments : Accomplishment.latest
     @accomplishment = Accomplishment.new
     @scopes = Scope.all
   end

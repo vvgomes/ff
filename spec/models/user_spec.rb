@@ -51,4 +51,13 @@ describe User do
     specify { leo.accomplishments_for(project).should == [for_project]}
     specify { leo.accomplishments_for(office).should == [for_office] }
   end
+
+  describe '#latest_accomplishments' do
+    let(:first) { build :accomplishment, :created_at => 2.minutes.ago }
+    let(:last)  { build :accomplishment, :created_at => 1.minutes.ago }
+
+    before { subject.stub(:accomplishments).and_return [first, last] }
+
+    its(:latest_accomplishments) { should == [last, first] }
+  end
 end

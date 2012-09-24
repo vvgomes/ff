@@ -28,4 +28,8 @@ class User < ActiveRecord::Base
   def accomplishments_for scope
     accomplishments.select{ |a| a.scope == scope }
   end
+
+  def latest_accomplishments
+    accomplishments.sort { |x, y| y.created_at <=> x.created_at }
+  end
 end
