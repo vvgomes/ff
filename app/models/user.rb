@@ -34,4 +34,12 @@ class User < ActiveRecord::Base
   def latest_accomplishments
     accomplishments.sort { |x, y| y.created_at <=> x.created_at }
   end
+
+  def suggest(description, receiver)
+    Suggestion.new({
+      :description => description,
+      :sender => self,
+      :receiver => receiver
+    }).tap(&:save)
+  end
 end

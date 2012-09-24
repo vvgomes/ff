@@ -64,4 +64,16 @@ describe User do
 
     its(:latest_accomplishments) { should == [last, first] }
   end
+
+  describe '#suggest' do
+    let(:leo) { build :user}
+    let(:mathias) { build :user }
+
+    before { Suggestion.any_instance.should_receive(:save) }
+    subject { mathias.suggest('stop being late', leo) }
+ 
+    its(:sender) { should == mathias }
+    its(:receiver) { should == leo }
+    its(:description) { should == 'stop being late' }
+  end
 end
