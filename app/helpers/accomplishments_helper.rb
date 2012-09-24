@@ -1,4 +1,6 @@
 module AccomplishmentsHelper
+  extend Memoist
+
   def description_max_length
     Accomplishment.validators_on(:description).find do |validator|
       validator.class == ActiveModel::Validations::LengthValidator
@@ -13,4 +15,10 @@ module AccomplishmentsHelper
     percentage = accomplishments_for_scope / total_accomplishments * 100
     "%0.2f" % [percentage] + "%"
   end
+
+  def total_accomplishments
+    @user.accomplishments.count
+  end
+
+  memoize :total_accomplishments
 end
