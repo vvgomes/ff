@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
-  has_many :posts, :foreign_key => 'poster_id', :class_name => 'Accomplishment'
-  has_many :accomplishments, :foreign_key => 'receiver_id', :class_name => 'Accomplishment'
-  has_and_belongs_to_many :groups
+  has_many :posts, :foreign_key => 'poster_id', :class_name => Accomplishment
+  has_many :accomplishments, :foreign_key => 'receiver_id', :class_name => Accomplishment
+
+  has_many :sent_suggestions, :foreign_key => 'sender_id', :class_name => Suggestion
+  has_many :received_suggestions, :foreign_key => 'receiver_id', :class_name => Suggestion
 
   attr_accessible :username
   validates_presence_of :username
