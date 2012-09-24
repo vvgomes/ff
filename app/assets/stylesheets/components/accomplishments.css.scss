@@ -1,9 +1,8 @@
 #new-accomplishment {
   @include glass-base(10px);
-  $width: $max-width / 2;
   color: $article-background-color;
   margin-top: 100px;
-  width: $width;
+  width: $max-width / 2;
   position: fixed;
   left: 50%;
   margin-left: -$max-width - 24px;
