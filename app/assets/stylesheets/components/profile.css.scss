@@ -28,5 +28,33 @@
     color: rgba(black, 0.3);
     text-shadow: 1px 1px 1px rgba(white, 0.2);
   }
+}
 
+#accomplishments-chart {
+  clear: both;
+  font-size: 10px;
+  width: 100%;
+
+  dt {
+    float: left;
+    display: inline;
+    width: 30%;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 5px;
+    color: $body-font-color;
+    text-shadow: 1px 1px 1px rgba(white, 0.2);
+    text-transform: uppercase;
+  }
+
+  dd {
+    width: 70%;
+    float: left;
+    margin-top: 5px;
+
+    meter {
+      width: 100%;
+      border: 1px solid transparent;
+    }
+  }
 }

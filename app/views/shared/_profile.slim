@@ -1,8 +1,9 @@
 div itemscope='' itemtype='http://schema.org/Person'
-  = gravatar_image_tag(current_user.email, itemprop:'image', alt: current_user.username, gravatar: { secure: true })
-  span itemprop='name' = current_user.username
+  = gravatar_image_tag(@user.email, itemprop:'image', alt: @user.username, gravatar: { secure: true })
+  span itemprop='name' = @user.username
 
   dl#accomplishments-chart
     - Scope.all.each do |scope|
       dt = scope.name
-      dd = percentage_of_accomplishment_for current_user, scope
+      dd
+        meter min=0 max=@user.accomplishments.size value=@user.accomplishments_for(scope).size title=percentage_of_accomplishment_for(@user, scope)
