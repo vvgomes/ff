@@ -11,7 +11,7 @@ describe Accomplishment do
   it { should allow_mass_assignment_of :poster_id }
   it { should allow_mass_assignment_of :scope_id }
   
-  it { should validate_presence_of(:description) }
+  it { should validate_presence_of :description }
   it { should ensure_length_of(:description).is_at_most 140 }
   it { should validate_presence_of :receiver }
   it { should validate_presence_of :poster }
