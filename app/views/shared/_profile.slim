@@ -1,6 +1,8 @@
 div itemscope='' itemtype='http://schema.org/Person'
   = gravatar_image_tag(@user.email, itemprop:'image', alt: @user.username, gravatar: { secure: true })
   span itemprop='name' = @user.username
+  span#total = @user.accomplishments.count
+  span#unit accomplishments 
 
   dl#accomplishments-chart
     - Scope.all.each do |scope|
