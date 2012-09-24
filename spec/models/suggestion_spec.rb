@@ -12,4 +12,12 @@ describe Suggestion do
   it { should validate_presence_of :receiver }
   it { should validate_presence_of :sender }
 
+  context 'when the sender and the receiver are the same person' do
+    let(:cheater) { build :user }
+    subject do
+      build(:suggestion,
+        sender: cheater, receiver: cheater, description: 'foo') 
+    end
+    it { should_not be_valid }
+  end
 end

@@ -1,5 +1,4 @@
 FactoryGirl.define do
-
   factory :user do
     username { Faker::Internet.user_name }
   end
@@ -13,5 +12,11 @@ FactoryGirl.define do
 
   factory :scope do
     name { Faker::Name.name }
+  end
+
+  factory :suggestion do
+    association :sender, :factory => :user
+    association :receiver, :factory => :user
+    description { Faker::Lorem.paragraph }
   end
 end
