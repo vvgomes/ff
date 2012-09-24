@@ -14,7 +14,9 @@ class AccomplishmentsController < ApplicationController
     scope = Scope.find_by_id(raw[:scope_id])
     @accomplishment = current_user.report_accomplishment(description, receiver, scope)
     if @accomplishment.valid?
-      redirect_to accomplishments_path, notice: 'Accomplishment reported!'
+      username = request.referer.scan(/\/(\w+)$/).join
+      path = username.empty? ? '/' : user_path(username)
+      redirect_to path, notice: 'Accomplishment reported!'
     else
       @scopes = Scope.all
       @accomplishments = Accomplishment.latest
