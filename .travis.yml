@@ -1,5 +1,5 @@
 before_script:
-  - echo "%{build_number}"
+  - echo $BUILD_NUMBER
   - psql -c 'create database ff_test;' -U postgres
   - bundle exec rake db:migrate
 language: ruby
