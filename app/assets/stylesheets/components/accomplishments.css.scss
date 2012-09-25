@@ -57,6 +57,11 @@
 #latest-accomplishments {
   min-height: 250px;
 
+  #forever-alone {
+    display: block;
+    margin: auto;
+  }
+
   .accomplishment {
     background: url($accomplishment-pattern);
     box-shadow: 0 2px rgba(5,3,5,.1), inset 0 0 0 1px #fff;

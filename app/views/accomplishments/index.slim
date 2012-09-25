@@ -2,16 +2,19 @@ section#latest-accomplishments
   h1 Latest Accomplishments
   = will_paginate @accomplishments
   ul
-    - @accomplishments.each do |acc|
-      li.accomplishment itemscope='' itemtype='http://schema.org/Review'
-        div itemprop='itemReviewed' itemscope='' itemtype='http://schema.org/Person'
-          = gravatar_image_tag(acc.receiver.email, itemprop:'image', alt: acc.receiver.username, gravatar: { secure: true, size: 50 })
-          = link_to acc.receiver.username, user_path(acc.receiver.username), :itemprop => 'name'
-        p itemprop='description' = truncate acc.description, length: 310
-        time itemprop='datePublished' datetime=acc.updated_at.utc.iso8601
-          span.day = acc.updated_at.day
-          span.month = acc.updated_at.strftime '%b'
-          span.year = acc.updated_at.year
-        = link_to "by #{acc.poster.username}", user_path(acc.poster.username), :itemprop => 'author'
+    - if @accomplishments.empty?
+      = image_tag 'forever-alone.png', :id => 'forever-alone', :alt => 'Forever Alone!', :title => 'Forever Alone!'
+    - else
+      - @accomplishments.each do |acc|
+        li.accomplishment itemscope='' itemtype='http://schema.org/Review'
+          div itemprop='itemReviewed' itemscope='' itemtype='http://schema.org/Person'
+            = gravatar_image_tag(acc.receiver.email, itemprop:'image', alt: acc.receiver.username, gravatar: { secure: true, size: 50 })
+            = link_to acc.receiver.username, user_path(acc.receiver.username), :itemprop => 'name'
+          p itemprop='description' = truncate acc.description, length: 310
+          time itemprop='datePublished' datetime=acc.updated_at.utc.iso8601
+            span.day = acc.updated_at.day
+            span.month = acc.updated_at.strftime '%b'
+            span.year = acc.updated_at.year
+          = link_to "by #{acc.poster.username}", user_path(acc.poster.username), :itemprop => 'author'
 
   = will_paginate @accomplishments
