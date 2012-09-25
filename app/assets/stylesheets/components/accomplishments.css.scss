@@ -134,4 +134,18 @@
       color: $article-font-color;
     }
   }
+
+  .pagination {
+    text-align: right;
+    .current {
+      color: $color-pink;
+    }
+    a {
+      text-decoration: none;
+      color: $article-font-color;
+      &:hover {
+        color: $body-font-color;
+      }
+    }
+  }
 }

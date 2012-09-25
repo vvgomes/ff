@@ -2,7 +2,9 @@ class AccomplishmentsController < ApplicationController
   def index
     u = params[:username]
     @user = u ? User.find_by_username(u) : current_user
-    @accomplishments = u ? @user.latest_accomplishments : Accomplishment.latest
+
+    @accomplishments = (u ? @user.accomplishments : Accomplishment.latest).paginate(:page => params[:page])
+
     @accomplishment = Accomplishment.new
     @scopes = Scope.all
   end

@@ -1,5 +1,6 @@
 section#latest-accomplishments
   h1 Latest Accomplishments
+  = will_paginate @accomplishments
   ul
     - @accomplishments.each do |acc|
       li.accomplishment itemscope='' itemtype='http://schema.org/Review'
@@ -12,3 +13,5 @@ section#latest-accomplishments
           span.month = acc.updated_at.strftime '%b'
           span.year = acc.updated_at.year
         = link_to "by #{acc.poster.username}", user_path(acc.poster.username), :itemprop => 'author'
+
+  = will_paginate @accomplishments

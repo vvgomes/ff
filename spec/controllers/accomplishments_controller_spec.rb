@@ -14,6 +14,7 @@ describe AccomplishmentsController do
     context 'home' do
       before do
         Accomplishment.stub(:latest).and_return all
+        all.should_receive(:paginate).and_return all
         get :index
       end
 
@@ -30,7 +31,9 @@ describe AccomplishmentsController do
       let(:mathias) { build :user }
       before do
         User.stub(:find_by_username).with('mgusso').and_return mathias
-        mathias.stub(:latest_accomplishments).and_return from_user
+        mathias.stub(:accomplishments).and_return from_user
+        from_user.should_receive(:paginate).and_return from_user
+
         get :index, :username => 'mgusso'
       end
 
@@ -48,18 +51,18 @@ describe AccomplishmentsController do
     let(:poster_id) { user.id }
     let(:receiver_id) { create(:user).id }
     let(:scope_id) { create(:scope).id }
-    
+
     context 'a valid accomplishment' do
       let(:attrs) {{
-        :description => 'fixed build', 
-        :receiver_id => receiver_id, 
+        :description => 'fixed build',
+        :receiver_id => receiver_id,
         :scope_id => scope_id
       }}
 
       context 'from home' do
         before do
           subject.request.stub(:referer).and_return 'ff.com/'
-          post :create, :accomplishment => attrs 
+          post :create, :accomplishment => attrs
         end
 
         it { should respond_with(302) }
@@ -70,7 +73,7 @@ describe AccomplishmentsController do
       context 'from user profile' do
         before do
           subject.request.stub(:referer).and_return 'ff.com/mgusso'
-          post :create, :username => 'mgusso', :accomplishment => attrs 
+          post :create, :username => 'mgusso', :accomplishment => attrs
         end
 
         it { should respond_with(302) }
@@ -80,9 +83,9 @@ describe AccomplishmentsController do
     end
 
     context 'an invalid accomplishment' do
-      let(:attrs) {{ 
-       :description => '', 
-       :receiver_id => receiver_id, 
+      let(:attrs) {{
+       :description => '',
+       :receiver_id => receiver_id,
        :scope_id => scope_id
       }}
 

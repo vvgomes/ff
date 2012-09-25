@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :posts, :foreign_key => 'poster_id', :class_name => Accomplishment
-  has_many :accomplishments, :foreign_key => 'receiver_id', :class_name => Accomplishment
+  has_many :accomplishments, :foreign_key => 'receiver_id', :class_name => Accomplishment, :order => 'created_at DESC'
 
   has_many :sent_suggestions, :foreign_key => 'sender_id', :class_name => Suggestion
   has_many :received_suggestions, :foreign_key => 'receiver_id', :class_name => Suggestion
@@ -29,10 +29,6 @@ class User < ActiveRecord::Base
 
   def accomplishments_for scope
     accomplishments.select{ |a| a.scope == scope }
-  end
-
-  def latest_accomplishments
-    accomplishments.sort { |x, y| y.created_at <=> x.created_at }
   end
 
   def suggest(description, receiver)
