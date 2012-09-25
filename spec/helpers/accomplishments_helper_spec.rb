@@ -43,10 +43,5 @@ describe AccomplishmentsHelper do
   describe '#total_accomplishments' do
     before { @user = stub(:accomplishments => [stub]) }
     specify { total_accomplishments.should == 1 }
-    
-    it 'should cache result' do
-      @user.should_receive(:accomplishments).once  
-      2.times { total_accomplishments }
-    end
   end
 end

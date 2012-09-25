@@ -1,5 +1,4 @@
 module AccomplishmentsHelper
-  extend Memoist
 
   def description_max_length
     Accomplishment.validators_on(:description).find do |validator|
@@ -19,6 +18,4 @@ module AccomplishmentsHelper
   def total_accomplishments
     @user.accomplishments.count
   end
-
-  memoize :total_accomplishments
 end
