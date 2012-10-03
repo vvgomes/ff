@@ -13,16 +13,14 @@ html
 
     header
       = link_to 'Fast Feedback', root_url, :id => 'logo'
-      = render 'shared/identity'
+      #identity
+        'Signed in as
+          #{current_user.username} |
+          #{link_to 'Sign out', destroy_user_session_path, :class => 'action'}
 
-    aside#new-accomplishment
-      = render 'form'
-
-    aside#profile
-      = render 'shared/profile'
-
-    article
-      = yield
+    aside#new-accomplishment = yield :new_accomplishment
+    aside#profile = yield :profile
+    article = yield
 
     footer
       p ThoughtWorks - #{APP_VERSION}

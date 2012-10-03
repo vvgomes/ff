@@ -9,7 +9,7 @@ class SuggestionsController < ApplicationController
     else
       @scopes = Scope.all
       @accomplishments = Accomplishment.latest
-      render 'accomplishments/index'
+      render 'application/index'
     end
   end
 end

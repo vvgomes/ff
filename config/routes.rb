@@ -1,11 +1,8 @@
 FF::Application.routes.draw do
-  devise_for :users
-
   resources :accomplishments
   resources :suggestions
-  resources :users
 
-  get '/:username', :to => 'accomplishments#index', :as => :user
-
-  root to: 'accomplishments#index'
+  devise_for :users
+  get '/:username', :to => 'users#index', :as => 'user'
+  root to: 'application#index'
 end

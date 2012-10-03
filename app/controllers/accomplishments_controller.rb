@@ -1,14 +1,4 @@
 class AccomplishmentsController < ApplicationController
-  def index
-    u = params[:username]
-    @user = u ? User.find_by_username(u) : current_user
-
-    @accomplishments = (u ? @user.accomplishments : Accomplishment.latest).paginate(:page => params[:page])
-
-    @accomplishment = Accomplishment.new
-    @scopes = Scope.all
-  end
-
   def create
     raw = params[:accomplishment]
     description = raw[:description]

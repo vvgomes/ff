@@ -6,12 +6,12 @@ describe SuggestionsController do
   describe '#create' do
     let(:sender_id) { user.id }
     let(:receiver_id) { create(:user).id }
-    
+
     before { post :create, suggestion: attrs }
 
     context 'a valid suggestion' do
       let(:attrs) {{
-        :description => 'stop being late', 
+        :description => 'stop being late',
         :receiver_id => receiver_id
       }}
 
@@ -21,12 +21,12 @@ describe SuggestionsController do
     end
 
     context 'an invalid suggestion' do
-      let(:attrs) {{ 
-       :description => '', 
+      let(:attrs) {{
+       :description => '',
        :receiver_id => receiver_id
       }}
 
-      it { should render_template 'accomplishments/index' }
+      it { should render_template 'application/index' }
       it { assigns(:suggestion).should_not be_valid }
     end
   end

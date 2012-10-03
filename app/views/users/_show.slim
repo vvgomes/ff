@@ -1,7 +1,7 @@
 div itemscope='' itemtype='http://schema.org/Person'
   = gravatar_image_tag(@user.email, itemprop:'image', alt: @user.username, gravatar: { secure: true })
   span itemprop='name' = @user.username
-  span#total = total_accomplishments 
+  span#total = total_accomplishments
   span#unit accomplishment#{total_accomplishments == 1 ? '' : 's'}
 
   dl#accomplishments-chart
