@@ -5,11 +5,9 @@ class SuggestionsController < ApplicationController
     receiver = User.find_by_id(raw[:receiver_id])
     @suggestion = current_user.suggest(description, receiver)
     if @suggestion.valid?
-      redirect_to user_path(receiver), notice: 'Suggestion sent!'
+      redirect_to user_path(receiver.username), notice: 'Suggestion sent!'
     else
-      @scopes = Scope.all
-      @accomplishments = Accomplishment.latest
-      render 'application/index'
+      redirect_to user_path(receiver.username)
     end
   end
 end
