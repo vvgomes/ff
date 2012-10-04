@@ -1,0 +1,3 @@
+= form_for(@suggestion) do |f|
+  = f.text_area :description, :placeholder => 'Suggest improvement', :required => true
+  = f.submit :value => 'Send!'

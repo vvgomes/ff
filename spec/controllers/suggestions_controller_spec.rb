@@ -16,7 +16,7 @@ describe SuggestionsController do
       }}
 
       it { should respond_with(302) }
-      it { should redirect_to accomplishments_path }
+      it { should redirect_to user_path(receiver_id) }
       it { should set_the_flash.to('Suggestion sent!') }
     end
 

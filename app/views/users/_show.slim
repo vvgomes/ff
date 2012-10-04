@@ -9,3 +9,6 @@ div itemscope='' itemtype='http://schema.org/Person'
       dt = scope.name
       dd
         meter min=0 max=@user.accomplishments.size value=@user.accomplishments_for(scope).size title=percentage_of_accomplishment_for(@user, scope)
+
+  - if @user != current_user
+    = render 'suggestions/new'

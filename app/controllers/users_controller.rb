@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @accomplishments = @user.accomplishments.paginate(:page => params[:page])
     @accomplishment = Accomplishment.new
     @scopes = Scope.all
+    @suggestion = Suggestion.new
   end
 
 end

@@ -26,6 +26,7 @@ describe UsersController do
       it { assigns(:accomplishments).should =~ from_user }
       it { assigns(:accomplishment).should be_a_new Accomplishment }
       it { assigns(:scopes).should == scopes }
+      it { assigns(:suggestion).should be_a_new Suggestion }
       it { should render_template :index }
       it { should_not set_the_flash }
     end
