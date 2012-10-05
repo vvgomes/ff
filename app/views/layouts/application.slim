@@ -11,6 +11,7 @@ html
   body
     = render 'shared/flash_messages'
 
+    h1 This is Stagging!
     header
       = link_to 'Fast Feedback', root_url, :id => 'logo'
       #identity
@@ -18,7 +19,6 @@ html
           #{current_user.username} |
           #{link_to 'Sign out', destroy_user_session_path, :class => 'action'}
     
-    h1 This is Stagging!
     aside#new-accomplishment = yield :new_accomplishment
     aside#profile = yield :profile
     article = yield
