@@ -46,6 +46,28 @@
     color: rgba($body-font-color, 0.5);
     text-shadow: 1px 1px 1px rgba(white, 0.2);
   }
+
+  #suggestion_description {
+    @include transition(height 100ms);
+    @include text-area;
+    height: 30px;
+    width: 100%;
+    margin-top: 10px;
+
+    & + input[type=submit] {
+      display: none;
+      float: right;
+    }
+
+    &:focus, &:valid {
+      height: 80px;
+
+      & + input[type=submit] {
+        display: inline-block;
+      }
+    }
+
+  }
 }
 
 #accomplishments-chart {

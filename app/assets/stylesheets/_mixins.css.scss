@@ -75,6 +75,18 @@
   }
 }
 
+@mixin text-area {
+  border: none;
+  border-radius: 3px;
+  color: white;
+  padding: 5px;
+  background-color: rgba(black, 0.1);
+  @include box-shadow(
+    1px 1px 1px rgba(white, 0.2),
+    1px 1px 1px rgba(black, 0.2) inset
+  );
+}
+
 @mixin button($color) {
   @include stripped-background($color);
   position: relative;
