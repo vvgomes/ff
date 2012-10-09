@@ -57,7 +57,7 @@ describe User do
   end
 
   describe '#suggest' do
-    let(:leo) { build :user}
+    let(:leo) { build :user }
     let(:mathias) { build :user }
 
     before { Suggestion.any_instance.should_receive(:save) }
@@ -87,4 +87,35 @@ describe User do
     specify { subject.score_for(project).should == 2 }
     specify { subject.score_for(account).should == 0 }
   end
+
+  describe '#able_to_approve?' do
+    let(:sugg) { build :suggestion, :receiver => receiver }
+
+    before { sugg.stub(:useful?).and_return approved }
+    
+    context 'owned suggestion not approved' do
+      let(:receiver) { subject }
+      let(:approved) { false }
+      it { should be_able_to_approve sugg }
+    end
+
+    context 'owned suggestion approved' do
+      let(:receiver) { subject }
+      let(:approved) { true }
+      it { should_not be_able_to_approve sugg }
+    end
+
+    context 'suggestion to someone else not approved' do
+      let(:receiver) { build :user }
+      let(:approved) { false }
+      it { should_not be_able_to_approve sugg }
+    end
+
+    context 'suggestion to someone else approved' do
+      let(:receiver) { build :user }
+      let(:approved) { true }
+      it { should_not be_able_to_approve sugg }
+    end
+  end
+
 end

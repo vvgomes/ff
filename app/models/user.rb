@@ -47,4 +47,8 @@ class User < ActiveRecord::Base
     accomplishments_for(scope).size
   end
 
+  def able_to_approve? suggestion
+    self == suggestion.receiver && !suggestion.useful?
+  end
+
 end
