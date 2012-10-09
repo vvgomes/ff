@@ -1,1 +1,21 @@
-p Accomplishment
+header
+  h1 New Accomplishment
+  h2 
+    |by 
+    = link_to @accomplishment.poster.username, "http://fastfeedback.heroku.com/#{@accomplishment.poster.username}"
+
+article
+  p #{@accomplishment.description}
+
+article
+  h2 Congratulations!
+  p
+    = link_to 'Your', "http://fastfeedback.heroku.com/#{@accomplishment.receiver.username}"
+    'current score is #{@accomplishment.receiver.score}
+
+footer
+  p
+    |Keep giving 
+    = link_to 'Fast Feedback', "http://fastfeedback.heroku.com"
+    'to your fellows!
+
