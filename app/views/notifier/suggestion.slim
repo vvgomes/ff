@@ -1,7 +1,7 @@
 header
   h1 Improvement Suggestion
   h2 
-    |by
+    |by 
     = link_to @suggestion.sender.username, "http://fastfeedback.heroku.com/#{@suggestion.sender.username}"
 
 article
@@ -17,7 +17,7 @@ article
 
 footer
   p
-    'Hey, keep giving '
+    |Keep giving 
     = link_to 'Fast Feedback', "http://fastfeedback.heroku.com"
-    ' to your fellows!'
+    | to your fellows!
 
