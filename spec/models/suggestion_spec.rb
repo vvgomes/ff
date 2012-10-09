@@ -12,6 +12,9 @@ describe Suggestion do
   it { should validate_presence_of :receiver }
   it { should validate_presence_of :sender }
 
+  it { should respond_to :description }
+  it { should respond_to :description= }
+
   context 'when the sender and the receiver are the same person' do
     let(:cheater) { build :user }
     subject do
