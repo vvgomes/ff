@@ -35,8 +35,12 @@ describe SuggestionsController do
 
   describe '#edit' do
     let(:sugg) { create :suggestion, :receiver => receiver }
+    let(:accomplishments) { [build(:accomplishment)] }
+    let(:scopes) { [build(:scope)] }
     
     before do
+      Scope.stub(:all).and_return scopes
+      Accomplishment.stub_chain(:latest, :paginate).and_return accomplishments
       Suggestion.stub(:find_by_id).with(sugg.id.to_s).and_return sugg
       get :edit, :id => sugg.id
     end
@@ -48,6 +52,10 @@ describe SuggestionsController do
         it { should respond_with 200 }
         it { should render_template :edit }
         it { assigns(:suggestion).should == sugg }
+        it { assigns(:user).should == user }
+        it { assigns(:accomplishment).should be_a_new Accomplishment }
+        it { assigns(:accomplishments).should == accomplishments }
+        it { assigns(:scopes).should == scopes }
       end
 
       context 'twice' do

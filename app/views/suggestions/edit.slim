@@ -1,3 +1,9 @@
+- content_for :new_accomplishment do
+  = render 'accomplishments/new'
+
+- content_for :profile do
+  = render 'users/show'
+
 = form_for(@suggestion) do |f|
   p Did you like last suggestion sent by #{@suggestion.sender.username}?
   = f.submit :value => 'Approve!'

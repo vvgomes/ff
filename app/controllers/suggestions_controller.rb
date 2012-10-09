@@ -26,6 +26,10 @@ class SuggestionsController < ApplicationController
 
   def edit
     if (@suggestion = try_suggestion params[:id])
+      @user = current_user
+      @accomplishments = Accomplishment.latest.paginate(:page => params[:page])
+      @accomplishment = Accomplishment.new
+      @scopes = Scope.all
       render :edit
     else
       redirect_to '/'
