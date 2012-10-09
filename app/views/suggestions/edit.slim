@@ -6,7 +6,8 @@
 
 h1 Suggestion Approval
 = form_for(@suggestion) do |f|
-  p 
+  p#approval 
     = f.submit :value => 'Approve'
     |  last suggestion sent by 
     = link_to @suggestion.sender.username, user_path(@suggestion.sender.username)
+    |.
