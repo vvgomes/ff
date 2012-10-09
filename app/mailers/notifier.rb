@@ -19,4 +19,13 @@ class Notifier < ActionMailer::Base
     })
   end
 
+  def approval s
+    @suggestion = s
+    mail({
+      :from => s.receiver.email,
+      :to => s.sender.email,
+      :subject => "Your last Improvement Suggestion was approved!" 
+    })
+  end
+
 end

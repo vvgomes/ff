@@ -18,4 +18,12 @@ describe Notifier do
     its(:to) { should == ['leo@thoughtworks.com'] }
   end
 
+  describe '.approval' do
+    subject { Notifier.approval(sug) }
+    let(:sug) { build :suggestion, :sender => tc, :receiver => leo, :id=>99 }
+    its(:subject) { should == "Your last Improvement Suggestion was approved!" }
+    its(:from) { should == ['leo@thoughtworks.com'] }
+    its(:to) { should == ['tc@thoughtworks.com'] }
+  end
+
 end
