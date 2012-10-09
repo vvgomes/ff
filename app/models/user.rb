@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def able_to_approve? suggestion
+    return false unless suggestion
     self == suggestion.receiver && !suggestion.useful?
   end
 
