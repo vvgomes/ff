@@ -9,11 +9,14 @@ article
 
 article
   h2 How did you like this suggestion?
-  ul
-    li
-      = link_to 'Life changing!', "http://fastfeedback.heroku.com/suggestions/#{@suggestion.id}"
-    li
-      = link_to 'I  have a different point of view.', "http//fastfeedback.heroku.com/suggestions/#{@suggestion.id}"
+  p
+    |If you found this feedback useful, approve it to give your friend positive points. 
+  p
+    = form_for(@suggestion) do |f|
+      = f.submit :value => 'Approve'
+  p  
+    |If you have a different point of view or want more details, 
+    |reply this message or go have some coffes with  your friend :)
 
 footer
   p
