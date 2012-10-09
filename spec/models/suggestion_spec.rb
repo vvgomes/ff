@@ -20,6 +20,11 @@ describe Suggestion do
 
   it { should_not be_useful }
 
+  describe '#approve!' do
+    before { subject.approve! }
+    it { should be_useful }
+  end
+
   context 'when the sender and the receiver are the same person' do
     let(:cheater) { build :user }
     subject do
