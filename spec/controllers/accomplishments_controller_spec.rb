@@ -9,13 +9,13 @@ describe AccomplishmentsController do
 
   describe '#create' do
     let(:poster_id) { user.id }
-    let(:receiver_id) { create(:user).id }
+    let(:receiver) { create(:user) }
     let(:scope_id) { create(:scope).id }
 
     context 'a valid accomplishment' do
       let(:attrs) {{
         :description => 'fixed build',
-        :receiver_id => receiver_id,
+        :receiver_id => receiver.id,
         :scope_id => scope_id
       }}
 
@@ -28,6 +28,7 @@ describe AccomplishmentsController do
         it { should respond_with(302) }
         it { should redirect_to '/' }
         it { should set_the_flash.to('Accomplishment reported!') }
+        specify { Notifier.deliveries.last.to.should == [receiver.email] }
       end
 
       context 'from user profile' do
@@ -39,13 +40,14 @@ describe AccomplishmentsController do
         it { should respond_with(302) }
         it { should redirect_to user_path('mgusso') }
         it { should set_the_flash.to('Accomplishment reported!') }
+        specify { Notifier.deliveries.last.to.should == [receiver.email] }
       end
     end
 
     context 'an invalid accomplishment' do
       let(:attrs) {{
        :description => '',
-       :receiver_id => receiver_id,
+       :receiver_id => receiver.id,
        :scope_id => scope_id
       }}
 

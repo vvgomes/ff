@@ -6,6 +6,7 @@ class AccomplishmentsController < ApplicationController
     scope = Scope.find_by_id(raw[:scope_id])
     @accomplishment = current_user.report_accomplishment(description, receiver, scope)
     if @accomplishment.valid?
+      Notifier.accomplishment(@accomplishment).deliver
       username = request.referer.scan(/\/(\w+)$/).join
       path = username.empty? ? '/' : user_path(username)
       redirect_to path, notice: 'Accomplishment reported!'
