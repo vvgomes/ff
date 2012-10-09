@@ -4,6 +4,9 @@
 - content_for :profile do
   = render 'users/show'
 
+h1 Suggestion Approval
 = form_for(@suggestion) do |f|
-  p Did you like last suggestion sent by #{@suggestion.sender.username}?
-  = f.submit :value => 'Approve!'
+  p 
+    = f.submit :value => 'Approve'
+    |  last suggestion sent by 
+    = link_to @suggestion.sender.username, user_path(@suggestion.sender.username)

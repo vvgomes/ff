@@ -13,6 +13,7 @@ body {
     margin-bottom: $glass-padding;
     padding: 10px;
     border: solid 1px $article-border-color;
+    min-height: 300px;
     @include stripped-background($article-background-color);
     @include box-shadow(
       0 0 0 2px #f8eecf,
