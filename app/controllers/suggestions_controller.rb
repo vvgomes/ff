@@ -14,10 +14,9 @@ class SuggestionsController < ApplicationController
   end
 
   def update
-    s = Suggestion.find_by_id params[:id]
-    if s.receiver == current_user && !s.useful?
-     s.approve!
-     s.save
+    if (@suggestion = try_suggestion params[:id])
+     @suggestion.approve!
+     @suggestion.save
      #Notifier.suggestion_approved(s).deliver
      redirect_to '/', notice: 'Suggestion approved!'
     else
@@ -26,12 +25,18 @@ class SuggestionsController < ApplicationController
   end
 
   def edit
-    @suggestion = Suggestion.find_by_id params[:id]
-    if @suggestion.receiver == current_user && !@suggestion.useful?
+    if (@suggestion = try_suggestion params[:id])
       render :edit
     else
       redirect_to '/'
     end
+  end
+
+  private
+
+  def try_suggestion id
+    s = Suggestion.find_by_id id
+    current_user.able_to_approve?(s) ? s : nil
   end
 
 end
