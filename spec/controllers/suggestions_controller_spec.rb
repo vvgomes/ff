@@ -32,4 +32,44 @@ describe SuggestionsController do
       it { assigns(:suggestion).should_not be_valid }
     end
   end
+
+  describe '#update' do
+    let(:sender) { create :user }
+    let(:sugg) { create :suggestion, :sender => sender, :receiver => receiver  }
+
+    before do
+      Suggestion.stub(:find_by_id).with(sugg.id.to_s).and_return sugg
+      put :update, id: sugg.id
+    end
+
+    context 'from  the receiver' do
+      let(:receiver) { user }
+
+      context 'once' do
+        it { should respond_with(302) }
+        it { should redirect_to '/' }
+        it { should set_the_flash.to('Suggestion approved!') }
+        specify { sugg.should be_useful }
+      end
+
+      context 'twice' do
+        before do
+          sugg.should_not_receive :approve!
+          put :update, id: sugg.id
+        end
+
+        it { should respond_with(302) }
+        it { should redirect_to '/' }
+        specify { sugg.should be_useful }
+      end
+    end
+
+    context 'from someone else' do
+      let(:receiver) { create :user }
+      it { should respond_with(302) }
+      it { should redirect_to '/' }
+      specify { sugg.should_not be_useful }
+    end
+  end
+
 end
