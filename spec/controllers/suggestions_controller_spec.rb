@@ -34,23 +34,50 @@ describe SuggestionsController do
   end
 
   describe '#edit' do
-    let(:sugg) { create :suggestion }
-    before { get :edit, :id => sugg.id }
-    it { should respond_with 200 }
-    it { should render_template :edit }
-    it { assigns(:suggestion).should == sugg }
+    let(:sugg) { create :suggestion, :receiver => receiver }
+    
+    before do
+      Suggestion.stub(:find_by_id).with(sugg.id.to_s).and_return sugg
+      get :edit, :id => sugg.id
+    end
+
+    context 'from the receiver' do
+      let(:receiver) { user }
+
+      context 'once' do
+        it { should respond_with 200 }
+        it { should render_template :edit }
+        it { assigns(:suggestion).should == sugg }
+      end
+
+      context 'twice' do
+        before do
+          sugg.approve!
+          sugg.should_not_receive :approve!
+          get :edit, :id => sugg.id
+        end
+
+        it { should respond_with 302 }
+        it { should redirect_to '/' }
+      end
+    end
+    
+    context 'from someone else' do
+      let(:receiver) { create :user }
+      it { should respond_with 302 }
+      it { should redirect_to '/' }
+    end
   end
 
   describe '#update' do
-    let(:sender) { create :user }
-    let(:sugg) { create :suggestion, :sender => sender, :receiver => receiver  }
+    let(:sugg) { create :suggestion, :receiver => receiver }
 
     before do
       Suggestion.stub(:find_by_id).with(sugg.id.to_s).and_return sugg
       put :update, id: sugg.id
     end
 
-    context 'from  the receiver' do
+    context 'from the receiver' do
       let(:receiver) { user }
 
       context 'once' do

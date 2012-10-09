@@ -1,0 +1,3 @@
+= form_for(@suggestion) do |f|
+  p Did you like last suggestion sent by #{@suggestion.sender.username}?
+  = f.submit :value => 'Approve!'

@@ -27,6 +27,11 @@ class SuggestionsController < ApplicationController
 
   def edit
     @suggestion = Suggestion.find_by_id params[:id]
+    if @suggestion.receiver == current_user && !@suggestion.useful?
+      render :edit
+    else
+      redirect_to '/'
+    end
   end
 
 end
