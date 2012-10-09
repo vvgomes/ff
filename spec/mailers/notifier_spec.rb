@@ -5,7 +5,7 @@ describe Notifier do
   describe '.accomplishment' do
     subject { Notifier.accomplishment(acc) }
     let(:acc) { build :accomplishment, :poster => tc, :receiver => leo }
-    its(:subject) { should == 'Accomplishment reported by tc' }
+    its(:subject) { should == "You've got a new Accomplishment!" }
     its(:from) { should == ['tc@thoughtworks.com'] }
     its(:to) { should == ['leo@thoughtworks.com'] }
   end
@@ -13,7 +13,7 @@ describe Notifier do
   describe '.suggestion' do
     subject { Notifier.suggestion(sug) }
     let(:sug) { build :suggestion, :sender => tc, :receiver => leo }
-    its(:subject) { should == 'Improvements suggested by tc' }
+    its(:subject) { should == "You've got a new Improvement Suggestion!" }
     its(:from) { should == ['tc@thoughtworks.com'] }
     its(:to) { should == ['leo@thoughtworks.com'] }
   end

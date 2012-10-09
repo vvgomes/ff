@@ -6,7 +6,7 @@ class Notifier < ActionMailer::Base
     mail({
       :from => a.poster.email,
       :to => a.receiver.email, 
-      :subject => "Accomplishment reported by #{a.poster.username}"
+      :subject => "You've got a new Accomplishment!"
     })
   end
   
@@ -15,7 +15,7 @@ class Notifier < ActionMailer::Base
     mail({
       :from => s.sender.email,
       :to => s.receiver.email, 
-      :subject => "Improvements suggested by #{s.sender.username}"
+      :subject => "You've got a new Improvement Suggestion!"
     })
   end
 
