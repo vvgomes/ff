@@ -9,6 +9,10 @@
   margin-left: $width + 24px;
   padding-left: 10px;
 
+  a {
+    text-decoration: none;
+  }
+
   [itemprop=image] {
     border-radius: 5px;
     @include box-shadow(
