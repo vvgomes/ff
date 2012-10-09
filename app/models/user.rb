@@ -42,4 +42,9 @@ class User < ActiveRecord::Base
   def score
     accomplishments.size
   end
+
+  def score_for scope
+    accomplishments_for(scope).size
+  end
+
 end

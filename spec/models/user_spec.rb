@@ -72,4 +72,19 @@ describe User do
     before { 5.times { subject.accomplishments << build(:accomplishment) } } 
     its(:score) { should == 5 }
   end
+
+  describe '#score_for' do
+    let(:office) { build :scope }
+    let(:project) { build :scope }
+    let(:account) { build :scope }
+
+    before do
+      3.times { subject.accomplishments << build(:accomplishment, scope: office) }
+      2.times { subject.accomplishments << build(:accomplishment, scope: project) }
+    end
+
+    specify { subject.score_for(office).should == 3 }
+    specify { subject.score_for(project).should == 2 }
+    specify { subject.score_for(account).should == 0 }
+  end
 end
