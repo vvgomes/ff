@@ -85,6 +85,7 @@ describe SuggestionsController do
         it { should redirect_to '/' }
         it { should set_the_flash.to 'Suggestion approved!' }
         specify { sugg.should be_useful }
+        specify { Notifier.deliveries.last.to.should == [sugg.sender.email] }
       end
 
       context 'twice' do

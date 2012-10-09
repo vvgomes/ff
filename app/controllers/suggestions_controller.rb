@@ -17,7 +17,7 @@ class SuggestionsController < ApplicationController
     if (@suggestion = try_suggestion params[:id])
      @suggestion.approve!
      @suggestion.save
-     #Notifier.suggestion_approved(s).deliver
+      Notifier.approval(@suggestion).deliver
      redirect_to '/', notice: 'Suggestion approved!'
     else
       redirect_to '/'
