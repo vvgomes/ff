@@ -67,4 +67,9 @@ describe User do
     its(:receiver) { should == leo }
     its(:description) { should == 'stop being late' }
   end
+
+  describe '#score' do
+    before { 5.times { subject.accomplishments << build(:accomplishment) } } 
+    its(:score) { should == 5 }
+  end
 end

@@ -38,4 +38,8 @@ class User < ActiveRecord::Base
       :receiver => receiver
     }).tap(&:save)
   end
+
+  def score
+    accomplishments.size
+  end
 end
