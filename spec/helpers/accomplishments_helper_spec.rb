@@ -40,8 +40,4 @@ describe AccomplishmentsHelper do
     end
   end
 
-  describe '#total_accomplishments' do
-    before { @user = stub(:accomplishments => [stub]) }
-    specify { total_accomplishments.should == 1 }
-  end
 end
