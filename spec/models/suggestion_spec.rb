@@ -7,6 +7,7 @@ describe Suggestion do
   it { should allow_mass_assignment_of :sender }
   it { should allow_mass_assignment_of :receiver_id }
   it { should allow_mass_assignment_of :sender_id }
+  it { should allow_mass_assignment_of :useful }
   
   it { should validate_presence_of :description }
   it { should validate_presence_of :receiver }
@@ -14,6 +15,10 @@ describe Suggestion do
 
   it { should respond_to :description }
   it { should respond_to :description= }
+  it { should respond_to :useful? }
+  it { should respond_to :useful= }
+
+  it { should_not be_useful }
 
   context 'when the sender and the receiver are the same person' do
     let(:cheater) { build :user }
