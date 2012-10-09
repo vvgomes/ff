@@ -5,10 +5,10 @@ header
     = link_to @suggestion.sender.username, "http://fastfeedback.heroku.com/#{@suggestion.sender.username}"
 
 article
-  p "#{@suggestion.description}"
+  p #{@suggestion.description}
 
 article
-  p How did you like this suggestion?
+  h2 How did you like this suggestion?
   ul
     li
       = link_to 'Life changing!', "http://fastfeedback.heroku.com/suggestions/#{@suggestion.id}"
@@ -17,7 +17,7 @@ article
 
 footer
   p
-    |Hey, keep giving
+    'Hey, keep giving '
     = link_to 'Fast Feedback', "http://fastfeedback.heroku.com"
-    |to your fellows!
+    ' to your fellows!'
 
