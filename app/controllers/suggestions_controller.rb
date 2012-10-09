@@ -25,4 +25,8 @@ class SuggestionsController < ApplicationController
     end
   end
 
+  def edit
+    @suggestion = Suggestion.find_by_id params[:id]
+  end
+
 end

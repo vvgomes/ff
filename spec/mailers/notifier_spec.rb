@@ -12,7 +12,7 @@ describe Notifier do
 
   describe '.suggestion' do
     subject { Notifier.suggestion(sug) }
-    let(:sug) { build :suggestion, :sender => tc, :receiver => leo }
+    let(:sug) { build :suggestion, :sender => tc, :receiver => leo, :id=>99 }
     its(:subject) { should == "You've got a new Improvement Suggestion!" }
     its(:from) { should == ['tc@thoughtworks.com'] }
     its(:to) { should == ['leo@thoughtworks.com'] }
