@@ -1,12 +1,12 @@
 #identity {
   @include outer-container;
   text-align: right;
-  color: $body-font-color;
+  color: silver;
   font-size: 10px;
   text-transform: uppercase;
   text-shadow: 1px 1px 0 rgba(white, 0.2);
   a {
-    color: $body-font-color;
+    color: white;
     text-decoration: none;
     &:hover {
       color: $article-background-color;
