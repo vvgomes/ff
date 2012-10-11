@@ -11,6 +11,9 @@ describe AccomplishmentsController do
     let(:poster_id) { user.id }
     let(:receiver) { create(:user) }
     let(:scope_id) { create(:scope).id }
+    let(:path) { '/' }
+
+    before { subject.stub(:referer).and_return path }
 
     context 'a valid accomplishment' do
       let(:attrs) {{
@@ -19,41 +22,25 @@ describe AccomplishmentsController do
         :scope_id => scope_id
       }}
 
-      before { subject.stub(:referer).and_return path }
+      before { post :create, :accomplishment => attrs }
 
-      context 'from /' do
-        let(:path) { '/' }
-        before { post :create, :accomplishment => attrs }
-
-        it { should respond_with 302 }
-        it { should redirect_to '/' }
-        it { should set_the_flash.to 'Accomplishment reported!' }
-        specify { Notifier.deliveries.last.to.should == [receiver.email] }
-      end
-
-      context 'from /:username' do
-        let(:path) { '/mgusso' }
-        before { post :create, :username => 'mgusso', :accomplishment => attrs }
-
-        it { should respond_with 302 }
-        it { should redirect_to user_path('mgusso') }
-        it { should set_the_flash.to 'Accomplishment reported!' }
-        specify { Notifier.deliveries.last.to.should == [receiver.email] }
-      end
+      it { should respond_with 302 }
+      it { should redirect_to path }
+      it { should set_the_flash.to 'Accomplishment reported!' }
+      specify { Notifier.deliveries.last.to.should == [receiver.email] }
     end
 
     context 'an invalid accomplishment' do
       let(:attrs) {{
-       :description => '',
+       :description => ' ',
        :receiver_id => receiver.id,
        :scope_id => scope_id
       }}
 
       before { post :create, :accomplishment => attrs }
 
-      it { should render_template 'index' }
-      it { assigns(:accomplishment).should_not be_valid }
-      it { assigns(:scopes).should == scopes }
+      it { should respond_with 302 }
+      it { should redirect_to path }
     end
   end
 end

@@ -9,9 +9,7 @@ class AccomplishmentsController < ApplicationController
       Notifier.accomplishment(@accomplishment).deliver
       redirect_to referer, notice: 'Accomplishment reported!'
     else
-      @scopes = Scope.all
-      @accomplishments = Accomplishment.latest
-      render action: 'index'
+      redirect_to referer
     end
   end
 end
