@@ -53,4 +53,8 @@ class User < ActiveRecord::Base
     self == suggestion.receiver && !suggestion.useful?
   end
 
+  def give_thumbs_up accomplishment
+    ThumbsUp.new :accomplishment => accomplishment, :user => self
+  end
+
 end

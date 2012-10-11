@@ -127,4 +127,12 @@ describe User do
 
   end
 
+  describe '#give_thumbs_up' do
+    let(:acc) { build :accomplishment }
+    let(:leo) { build :user }
+    subject { leo.give_thumbs_up acc }
+    its(:accomplishment) { should == acc }
+    its(:user) { should == leo }
+  end
+
 end

@@ -7,7 +7,7 @@ FactoryGirl.define do
     association :poster, :factory => :user
     association :receiver, :factory => :user
     association :scope, :factory => :scope
-    description { Faker::Lorem.paragraph }
+    description { 'fixing the build!' }
   end
 
   factory :scope do
