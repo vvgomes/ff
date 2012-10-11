@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :sent_suggestions, :foreign_key => 'sender_id', :class_name => Suggestion
   has_many :received_suggestions, :foreign_key => 'receiver_id', :class_name => Suggestion
+  has_many :thumbs_ups
 
   attr_accessible :username
   validates_presence_of :username

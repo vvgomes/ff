@@ -2,6 +2,7 @@ describe Accomplishment do
   it { should belong_to :poster }
   it { should belong_to :receiver }
   it { should belong_to :scope }
+  it { should have_many :thumbs_ups }
 
   it { should allow_mass_assignment_of :description }
   it { should allow_mass_assignment_of :receiver }
