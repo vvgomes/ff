@@ -19,4 +19,9 @@ FactoryGirl.define do
     association :receiver, :factory => :user
     description { Faker::Lorem.paragraph }
   end
+
+  factory :thumbs_up do
+    association :user, :factory => :user
+    association :accomplishment, :factory => :accomplishment
+  end
 end
