@@ -28,4 +28,18 @@ describe ApplicationController do
       it { should_not set_the_flash }
     end
   end
+
+  describe '#referer' do
+    before { subject.request.stub(:referer).and_return url }
+
+    context 'from /' do
+      let(:url) { 'ff.com/' }
+      its(:referer) { should == '/' }
+    end
+
+    context 'from /:username' do
+      let(:url) { 'ff.com/mgusso' }
+      its(:referer) { should == '/mgusso' }
+    end
+  end
 end

@@ -19,27 +19,25 @@ describe AccomplishmentsController do
         :scope_id => scope_id
       }}
 
-      context 'from home' do
-        before do
-          subject.request.stub(:referer).and_return 'ff.com/'
-          post :create, :accomplishment => attrs
-        end
+      before { subject.stub(:referer).and_return path }
 
-        it { should respond_with(302) }
+      context 'from /' do
+        let(:path) { '/' }
+        before { post :create, :accomplishment => attrs }
+
+        it { should respond_with 302 }
         it { should redirect_to '/' }
-        it { should set_the_flash.to('Accomplishment reported!') }
+        it { should set_the_flash.to 'Accomplishment reported!' }
         specify { Notifier.deliveries.last.to.should == [receiver.email] }
       end
 
-      context 'from user profile' do
-        before do
-          subject.request.stub(:referer).and_return 'ff.com/mgusso'
-          post :create, :username => 'mgusso', :accomplishment => attrs
-        end
+      context 'from /:username' do
+        let(:path) { '/mgusso' }
+        before { post :create, :username => 'mgusso', :accomplishment => attrs }
 
-        it { should respond_with(302) }
+        it { should respond_with 302 }
         it { should redirect_to user_path('mgusso') }
-        it { should set_the_flash.to('Accomplishment reported!') }
+        it { should set_the_flash.to 'Accomplishment reported!' }
         specify { Notifier.deliveries.last.to.should == [receiver.email] }
       end
     end
