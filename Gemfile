@@ -25,3 +25,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'faker'
 end
+
+group :development do
+  gem 'guard-rspec'
+end
