@@ -5,4 +5,4 @@
 
   = f.text_area :description, :placeholder => 'doing something awesome…', :required => true, :maxlength => description_max_length, :autofocus => (@user != current_user)
 
-  p #{f.collection_select :scope_id, @scopes, :id, :name, { :prompt => 'Where?' }, { :required => true } } #{f.submit :value => 'Feedback it!'}
+  p #{f.submit :value => 'Feedback it!'}
