@@ -6,10 +6,4 @@ module AccomplishmentsHelper
     end.options[:maximum]
   end
 
-  def percentage_of_accomplishment_for user, scope
-    return "0.00%" unless (total = user.score.to_f) > 0
-    percentage = user.score_for(scope).to_f / total * 100
-    "%0.2f" % [percentage] + "%"
-  end
-
 end

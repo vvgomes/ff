@@ -1,10 +1,8 @@
 describe ApplicationController do
   let(:user) { create :user }
-  let(:scopes) { [build(:scope)] }
 
   before do
     sign_in user
-    Scope.stub(:all).and_return scopes
   end
 
   describe '#index' do
@@ -23,7 +21,6 @@ describe ApplicationController do
       it { assigns(:user).should == subject.current_user }
       it { assigns(:accomplishments).should =~ all }
       it { assigns(:accomplishment).should be_a_new Accomplishment }
-      it { assigns(:scopes).should == scopes }
       it { should render_template :index }
       it { should_not set_the_flash }
     end

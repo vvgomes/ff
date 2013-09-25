@@ -6,12 +6,7 @@ FactoryGirl.define do
   factory :accomplishment do
     association :poster, :factory => :user
     association :receiver, :factory => :user
-    association :scope, :factory => :scope
     description { 'fixing the build!' }
-  end
-
-  factory :scope do
-    name { Faker::Name.name }
   end
 
   factory :suggestion do

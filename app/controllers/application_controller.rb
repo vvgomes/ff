@@ -6,12 +6,10 @@ class ApplicationController < ActionController::Base
     @user = current_user
     @accomplishments = Accomplishment.latest.paginate(:page => params[:page])
     @accomplishment = Accomplishment.new
-    @scopes = Scope.all
   end
   
   def referer
     username = request.referer.scan(/\/(\w+)$/).join
     username.empty? ? '/' : user_path(username)
   end
-
 end

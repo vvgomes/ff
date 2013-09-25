@@ -15,21 +15,16 @@ class User < ActiveRecord::Base
     "#{username}@thoughtworks.com"
   end
 
-  def report_accomplishment(description, receiver, scope)
+  def report_accomplishment(description, receiver)
     Accomplishment.new({
       :description => description,
       :poster => self,
-      :receiver => receiver,
-      :scope => scope
+      :receiver => receiver
     }).tap(&:save)
   end
 
   def peers
     User.all - [self]
-  end
-
-  def accomplishments_for scope
-    accomplishments.select{ |a| a.scope == scope }
   end
 
   def suggest(description, receiver)
@@ -42,10 +37,6 @@ class User < ActiveRecord::Base
 
   def score
     accomplishments.size
-  end
-
-  def score_for scope
-    accomplishments_for(scope).size
   end
 
   def able_to_approve? suggestion

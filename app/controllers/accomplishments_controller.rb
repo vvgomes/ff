@@ -3,8 +3,7 @@ class AccomplishmentsController < ApplicationController
     raw = params[:accomplishment]
     description = raw[:description]
     receiver = User.find_by_id(raw[:receiver_id])
-    scope = Scope.find_by_id(raw[:scope_id])
-    @accomplishment = current_user.report_accomplishment(description, receiver, scope)
+    @accomplishment = current_user.report_accomplishment(description, receiver)
     if @accomplishment.valid?
       Notifier.accomplishment(@accomplishment).deliver
       redirect_to referer, notice: 'Accomplishment reported!'

@@ -15,14 +15,12 @@ describe User do
   describe '#report_accomplishment' do
     let(:leo) { build :user}
     let(:mathias) { build :user }
-    let(:project) { build :scope }
 
     before { Accomplishment.any_instance.should_receive(:save) }
-    subject { mathias.report_accomplishment('fixed build', leo, project) }
+    subject { mathias.report_accomplishment('fixed build', leo) }
 
     its(:poster) { should == mathias }
     its(:receiver) { should == leo }
-    its(:scope) { should == project }
     its(:description) { should == 'fixed build' }
   end
 
@@ -37,24 +35,6 @@ describe User do
       mathias.peers.should =~ [tramonta, leo]
       tramonta.peers.should =~ [leo, mathias]
     end
-  end
-
-  describe '#accomplishments_by_scope' do
-    let(:leo) { build :user}
-
-    let(:project) { build :scope, :name => 'project' }
-    let(:office) { build :scope, :name => 'office' }
-
-    let(:for_project) { build :accomplishment, :scope => project }
-    let(:for_office) { build :accomplishment, :scope => office }
-
-    before do
-      leo.accomplishments << for_project
-      leo.accomplishments << for_office
-    end
-
-    specify { leo.accomplishments_for(project).should == [for_project]}
-    specify { leo.accomplishments_for(office).should == [for_office] }
   end
 
   describe '#suggest' do
@@ -72,21 +52,6 @@ describe User do
   describe '#score' do
     before { 5.times { subject.accomplishments << build(:accomplishment) } } 
     its(:score) { should == 5 }
-  end
-
-  describe '#score_for' do
-    let(:office) { build :scope }
-    let(:project) { build :scope }
-    let(:account) { build :scope }
-
-    before do
-      3.times { subject.accomplishments << build(:accomplishment, scope: office) }
-      2.times { subject.accomplishments << build(:accomplishment, scope: project) }
-    end
-
-    specify { subject.score_for(office).should == 3 }
-    specify { subject.score_for(project).should == 2 }
-    specify { subject.score_for(account).should == 0 }
   end
 
   describe '#able_to_approve?' do
