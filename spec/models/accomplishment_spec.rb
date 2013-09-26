@@ -28,4 +28,11 @@ describe Accomplishment do
       Accomplishment.latest
     end
   end
+
+  context 'before save' do
+    specify do
+      subject.should_receive :parse_tags
+      subject.run_callbacks :save
+    end
+  end
 end

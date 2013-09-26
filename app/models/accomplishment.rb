@@ -10,6 +10,8 @@ class Accomplishment < ActiveRecord::Base
   validates_length_of :description, :maximum => 140
   validates_presence_of :description, :poster, :receiver
   validate :poster_cannot_be_receiver
+
+  before_save :parse_tags
  
   def poster_cannot_be_receiver
     errors.add(:receiver, 'cannot be yourself') if poster == receiver
@@ -17,5 +19,11 @@ class Accomplishment < ActiveRecord::Base
 
   def self.latest
     order 'created_at DESC'
+  end
+
+  private
+
+  def parse_tags
+
   end
 end
