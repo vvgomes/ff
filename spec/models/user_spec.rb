@@ -5,7 +5,6 @@ describe User do
   it { should have_many :posts }
   it { should have_many :sent_suggestions }
   it { should have_many :received_suggestions }
-  it { should have_many :thumbs_ups }
 
   it { should validate_presence_of :username }
   it { should allow_mass_assignment_of :username }
@@ -92,12 +91,5 @@ describe User do
 
   end
 
-  describe '#give_thumbs_up' do
-    let(:acc) { build :accomplishment }
-    let(:leo) { build :user }
-    subject { leo.give_thumbs_up acc }
-    its(:accomplishment) { should == acc }
-    its(:user) { should == leo }
-  end
-
 end
+

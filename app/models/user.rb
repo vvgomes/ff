@@ -1,10 +1,20 @@
 class User < ActiveRecord::Base
-  has_many :posts, :foreign_key => 'poster_id', :class_name => Accomplishment
-  has_many :accomplishments, :foreign_key => 'receiver_id', :class_name => Accomplishment, :order => 'created_at DESC'
+  has_many :posts, 
+    :foreign_key => 'poster_id', 
+    :class_name => Accomplishment
 
-  has_many :sent_suggestions, :foreign_key => 'sender_id', :class_name => Suggestion
-  has_many :received_suggestions, :foreign_key => 'receiver_id', :class_name => Suggestion
-  has_many :thumbs_ups
+  has_many :accomplishments, 
+    :foreign_key => 'receiver_id', 
+    :class_name => Accomplishment, 
+    :order => 'created_at DESC'
+
+  has_many :sent_suggestions, 
+    :foreign_key => 'sender_id', 
+    :class_name => Suggestion
+
+  has_many :received_suggestions, 
+    :foreign_key => 'receiver_id', 
+    :class_name => Suggestion
 
   attr_accessible :username
   validates_presence_of :username
@@ -43,9 +53,4 @@ class User < ActiveRecord::Base
     return false unless suggestion
     self == suggestion.receiver && !suggestion.useful?
   end
-
-  def give_thumbs_up accomplishment
-    ThumbsUp.new :accomplishment => accomplishment, :user => self
-  end
-
 end
