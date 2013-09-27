@@ -11,7 +11,7 @@ section#latest-accomplishments
             = gravatar_image_tag(acc.receiver.email, itemprop:'image', alt: acc.receiver.username, gravatar: { secure: true, size: 50 })
             = link_to acc.receiver.username, user_path(acc.receiver.username), :itemprop => 'name'
 
-          p itemprop='description' = truncate acc.description, length: 310
+          p itemprop='description' = truncate(auto_link_hashtags(acc.description, :hashtag_url_base=>'/tags/'), length: 310).html_safe
           time itemprop='datePublished' datetime=acc.updated_at.utc.iso8601
             span.day = acc.updated_at.day
             span.month = acc.updated_at.strftime '%b'
