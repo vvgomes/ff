@@ -52,6 +52,25 @@ describe User do
     before { 5.times { subject.accomplishments << build(:accomplishment) } } 
     its(:score) { should == 5 }
   end
+  
+  describe '#delete_accomplishment' do
+    let(:fixed_build) { build(:accomplishment, :poster => author) }
+    let(:author) { build(:user) }
+
+    context 'posted by him' do
+      specify do
+        fixed_build.should_receive(:destroy)
+        author.delete_accomplishment(fixed_build)
+      end
+    end
+
+    context 'posted by someone else' do
+      specify do
+        fixed_build.should_not_receive(:destroy) 
+        build(:user).delete_accomplishment(fixed_build)
+      end
+    end
+  end
 
   describe '#able_to_approve?' do
     let(:sugg) { build :suggestion, :receiver => receiver }
