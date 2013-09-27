@@ -17,5 +17,7 @@ section#latest-accomplishments
             span.month = acc.updated_at.strftime '%b'
             span.year = acc.updated_at.year
           = link_to "by #{acc.poster.username}", user_path(acc.poster.username), :itemprop => 'author'
+          - if current_user.allowed_to_delete?(acc)
+            = button_to 'remove', acc, :method => :delete, :confirm => 'Are you sure?'
 
   = will_paginate @accomplishments
