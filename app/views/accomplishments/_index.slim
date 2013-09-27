@@ -7,6 +7,7 @@ section#latest-accomplishments
     - else
       - @accomplishments.each do |acc|
         li.accomplishment itemscope='' itemtype='http://schema.org/Review'
+
           div itemprop='itemReviewed' itemscope='' itemtype='http://schema.org/Person'
             = gravatar_image_tag(acc.receiver.email, itemprop:'image', alt: acc.receiver.username, gravatar: { secure: true, size: 50 })
             = link_to acc.receiver.username, user_path(acc.receiver.username), :itemprop => 'name'
@@ -16,8 +17,8 @@ section#latest-accomplishments
             span.day = acc.updated_at.day
             span.month = acc.updated_at.strftime '%b'
             span.year = acc.updated_at.year
-          = link_to "by #{acc.poster.username}", user_path(acc.poster.username), :itemprop => 'author'
           - if current_user.allowed_to_delete?(acc)
-            = button_to 'remove', acc, :method => :delete, :confirm => 'Are you sure?'
+            = button_to '✕', acc, :method => :delete, :confirm => 'Are you sure?', :class => 'remove'
+          = link_to "by #{acc.poster.username}", user_path(acc.poster.username), :itemprop => 'author'
 
   = will_paginate @accomplishments

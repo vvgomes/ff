@@ -140,6 +140,26 @@
     [itemprop='itemReviewed'] > span:first-of-type {
       margin-left: 5px;
     } 
+
+    .remove {
+      opacity: 0;
+      font-size: 50%;
+      padding-left: 5px;
+      padding-right: 5px;
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      border-radius: 20px;
+      width: 15px;
+      height: 15px;
+      padding: 0;
+      text-shadow: none;
+      transition: all 250ms;
+    }
+
+    &:hover .remove {
+      opacity: 1;
+    }
   }
 
   .pagination {
