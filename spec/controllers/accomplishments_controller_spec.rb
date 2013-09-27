@@ -38,4 +38,19 @@ describe AccomplishmentsController do
       it { should redirect_to path }
     end
   end
+
+  describe '#destroy' do
+    let(:acc) { create(:accomplishment, :poster => user) }
+    let(:path) { '/' }
+
+    before do
+      Accomplishment.stub(:find_by_id).with(acc.id.to_s).and_return acc
+      subject.stub(:referer).and_return path
+      delete :destroy, :id => acc.id
+    end
+
+    it { should respond_with 302 }
+    it { should redirect_to path }
+    it { should set_the_flash.to 'Accomplishment removed!' }
+  end
 end
