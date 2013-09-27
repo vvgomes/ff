@@ -53,6 +53,20 @@ describe User do
     its(:score) { should == 5 }
   end
   
+  describe '#allowed_to_delete' do
+    let(:accomplishment) { build(:accomplishment, :poster => author) }
+
+    context 'an accomplishment posted by him' do
+      let(:author) { subject }
+      it { should be_allowed_to_delete accomplishment }
+    end
+
+    context 'an accomplishment posted by someone else' do
+      let(:author) { build(:user) }
+      it { should_not be_allowed_to_delete accomplishment }
+    end
+  end
+
   describe '#delete_accomplishment' do
     let(:fixed_build) { build(:accomplishment, :poster => author) }
     let(:author) { build(:user) }

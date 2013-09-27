@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
     }).tap(&:save)
   end
 
+  def allowed_to_delete?(accomplishment)
+    accomplishment.poster == self
+  end
+
   def delete_accomplishment(acc)
     acc.destroy if acc.poster == self
   end
