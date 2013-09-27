@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def delete_accomplishment(acc)
-    acc.destroy if acc.poster == self
+    acc.destroy if allowed_to_delete? acc
   end
 
   def peers

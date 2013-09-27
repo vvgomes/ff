@@ -68,20 +68,21 @@ describe User do
   end
 
   describe '#delete_accomplishment' do
-    let(:fixed_build) { build(:accomplishment, :poster => author) }
-    let(:author) { build(:user) }
+    let(:fixed_build) { build(:accomplishment) }
 
-    context 'posted by him' do
+    context 'when allowed' do
+      before { subject.stub(:allowed_to_delete?).and_return true }
       specify do
         fixed_build.should_receive(:destroy)
-        author.delete_accomplishment(fixed_build)
+        subject.delete_accomplishment(fixed_build)
       end
     end
 
-    context 'posted by someone else' do
+    context 'when not allowed' do
+      before { subject.stub(:allowed_to_delete?).and_return false }
       specify do
         fixed_build.should_not_receive(:destroy) 
-        build(:user).delete_accomplishment(fixed_build)
+        subject.delete_accomplishment(fixed_build)
       end
     end
   end
