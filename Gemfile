@@ -12,6 +12,7 @@ gem 'gravatar_image_tag'
 gem 'formtastic'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'will_paginate', '~> 3.0.0'
+gem 'twitter-text'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -21,6 +22,7 @@ group :assets do
 end
 
 group :test, :development do
+  gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'

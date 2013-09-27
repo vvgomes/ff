@@ -17,7 +17,9 @@ describe Accomplishment do
     let(:cheater) { build :user }
     subject do
       build(:accomplishment,
-        poster: cheater, receiver: cheater, description: 'foo')
+        poster: cheater,
+        receiver: cheater,
+        description: 'foo')
     end
     it { should_not be_valid }
   end
@@ -30,8 +32,11 @@ describe Accomplishment do
   end
 
   context 'before save' do
-    specify do
-      subject.should_receive :parse_tags
+    let(:tags) { double }
+    subject { build(:accomplishment, description: 'fixed build #gap #bfs') }
+    before { subject.stub(:tag_list).and_return(tags) }
+    it 'should parse tags' do
+      tags.should_receive(:add).with(['gap', 'bfs'])
       subject.run_callbacks :save
     end
   end

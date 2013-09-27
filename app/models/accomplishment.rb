@@ -1,4 +1,6 @@
 class Accomplishment < ActiveRecord::Base
+  include Twitter::Extractor
+
   belongs_to :poster, :class_name => User
   belongs_to :receiver, :class_name => User
   
@@ -24,6 +26,6 @@ class Accomplishment < ActiveRecord::Base
   private
 
   def parse_tags
-
+    tag_list.add(extract_hashtags(description))
   end
 end
