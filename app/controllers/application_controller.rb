@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
 
   def index
     @user = current_user
-    @accomplishments = Accomplishment.latest.paginate(:page => params[:page])
+    @accomplishments = Accomplishment.latest
+    @accomplishments = @accomplishments.tagged_with(params[:tag]) if params[:tag]
+    @accomplishments = @accomplishments.paginate(:page => params[:page])
     @accomplishment = Accomplishment.new
   end
   
