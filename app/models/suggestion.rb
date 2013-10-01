@@ -21,9 +21,4 @@ class Suggestion < ActiveRecord::Base
   def description= value
     @description = value
   end
-
-  def approve!
-    self.useful= true
-  end
-
 end
