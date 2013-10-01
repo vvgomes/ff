@@ -7,16 +7,6 @@ header
 article
   p #{@suggestion.description}
 
-article
-  h2 How did you like this suggestion?
-  p
-    |If you found this feedback useful, 
-    = link_to 'approve it', "http://fastfeedback.heroku.com/suggestions/#{@suggestion.id}/edit"
-    |  to give your friend positive points. 
-  p
-    |If you have a different point of view or want more details, 
-    |reply this message or go have some coffes with  your friend :)
-
 footer
   p
     |Keep giving 
