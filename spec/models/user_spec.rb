@@ -54,7 +54,7 @@ describe User do
     its(:score) { should == 5 }
   end
   
-  describe '#allowed_to_delete' do
+  describe '#allowed_to_delete?' do
     let(:accomplishment) { build(:accomplishment, :poster => author) }
 
     context 'an accomplishment posted by him' do
@@ -87,6 +87,10 @@ describe User do
       end
     end
 
+  end
+
+  describe '#allowed_to_plus_one?' do
+    context
   end
 
 end
