@@ -5,6 +5,7 @@ describe User do
   it { should have_many :posts }
   it { should have_many :sent_suggestions }
   it { should have_many :received_suggestions }
+  it { should have_many :plus_ones }
 
   it { should validate_presence_of :username }
   it { should allow_mass_assignment_of :username }

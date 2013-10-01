@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
     :foreign_key => 'receiver_id', 
     :class_name => Suggestion
 
+  has_many :plus_ones
+
   attr_accessible :username
   validates_presence_of :username
 
