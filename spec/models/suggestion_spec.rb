@@ -7,7 +7,6 @@ describe Suggestion do
   it { should allow_mass_assignment_of :sender }
   it { should allow_mass_assignment_of :receiver_id }
   it { should allow_mass_assignment_of :sender_id }
-  it { should allow_mass_assignment_of :useful }
   
   it { should validate_presence_of :receiver }
   it { should validate_presence_of :sender }

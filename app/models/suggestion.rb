@@ -4,7 +4,7 @@ class Suggestion < ActiveRecord::Base
 
   attr_accessible :sender, :receiver
   attr_accessible :sender_id, :receiver_id
-  attr_accessible :description, :useful
+  attr_accessible :description
 
   validates_presence_of :description, :unless => lambda { |s| s.id }
   validates_presence_of :sender, :receiver
