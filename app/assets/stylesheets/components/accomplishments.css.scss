@@ -87,7 +87,7 @@
       margin-right: 15px;
       margin-left: 60px;
       word-wrap: break-word;
-      min-height: 40px;
+      min-height: 45px;
       line-height: 1.4em;
     }
     [itemprop=datePublished] {
@@ -160,6 +160,21 @@
     &:hover .remove {
       opacity: 1;
     }
+
+    .plus-one {
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      text-shadow: none;
+      background-color: $color-green;
+      border-color: $color-green;
+      position: absolute;
+      top: 68px;
+    }
+
+    //&:hover .plus-one {
+   //   opacity: 1;
+    //}*/
   }
 
   .pagination {
