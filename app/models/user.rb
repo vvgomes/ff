@@ -56,9 +56,4 @@ class User < ActiveRecord::Base
   def score
     accomplishments.size
   end
-
-  def able_to_approve? suggestion
-    return false unless suggestion
-    self == suggestion.receiver && !suggestion.useful?
-  end
 end

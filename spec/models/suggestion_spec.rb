@@ -13,8 +13,4 @@ describe Suggestion do
 
   it { should respond_to :description }
   it { should respond_to :description= }
-  it { should respond_to :useful? }
-  it { should respond_to :useful= }
-
-  it { should_not be_useful }
 end
