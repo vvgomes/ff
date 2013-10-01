@@ -2,12 +2,13 @@
   $width: $max-width / 2;
   @include glass-base(10px);
   color: $article-background-color;
-  margin-top: 100px;
+  margin-top: 93px;
   width: $width;
   position: fixed;
   left: 50%;
   margin-left: $width + 24px;
   padding-left: 10px;
+  z-index: -1;
 
   a {
     text-decoration: none;

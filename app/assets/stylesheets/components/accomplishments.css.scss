@@ -1,11 +1,12 @@
 #new-accomplishment {
   @include glass-base(10px);
   color: $article-background-color;
-  margin-top: 100px;
+  margin-top: 93px;
   width: $max-width / 2;
   position: fixed;
   left: 50%;
   margin-left: -$max-width - 24px;
+  z-index: -1;
 
   #accomplishment_description {
     width: 100%;
