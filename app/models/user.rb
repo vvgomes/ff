@@ -58,4 +58,8 @@ class User < ActiveRecord::Base
   def score
     accomplishments.size
   end
+
+  def allowed_to_plus_one? accomplishment
+    accomplishment.poster != self &&  accomplishment.receiver != self
+  end
 end

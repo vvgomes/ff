@@ -90,7 +90,25 @@ describe User do
   end
 
   describe '#allowed_to_plus_one?' do
-    context
+    let(:accomplishment) { build(:accomplishment, :poster => author, :receiver => receiver) }
+
+    context 'an accomplishment posted by him' do
+      let(:author) { subject }
+      let(:receiver) { build(:user) }
+      it { should_not be_allowed_to_plus_one accomplishment }
+    end
+
+    context 'an accomplishment posted to him' do
+      let(:author) { build(:user) }
+      let(:receiver) { subject }
+      it { should_not be_allowed_to_plus_one accomplishment }
+    end
+
+    context 'an accomplishment he is not involved' do
+      let(:author) { build(:user) }
+      let(:receiver) { build(:user) }
+      it { should be_allowed_to_plus_one accomplishment }
+    end
   end
 
 end
