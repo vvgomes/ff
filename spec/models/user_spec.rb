@@ -111,5 +111,28 @@ describe User do
     end
   end
 
+  describe '#plus_one' do
+    let(:fixed_build) { build(:accomplishment) }
+
+    context 'when allowed' do
+      before { subject.stub(:allowed_to_plus_one?).and_return true }
+      specify do
+        PlusOne.should_receive(:new).
+          with(:accomplishment => fixed_build, :user => subject).
+          and_return(stub(:save => true))
+        subject.plus_one(fixed_build)
+      end
+    end
+
+    context 'when not allowed' do
+      before { subject.stub(:allowed_to_plus_one?).and_return false }
+      specify do
+        PlusOne.should_not_receive(:new)
+        subject.plus_one(fixed_build)
+      end
+    end
+
+  end
+
 end
 

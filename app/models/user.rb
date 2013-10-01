@@ -62,4 +62,11 @@ class User < ActiveRecord::Base
   def allowed_to_plus_one? accomplishment
     accomplishment.poster != self &&  accomplishment.receiver != self
   end
+
+  def plus_one(accomplishment)
+    PlusOne.new({
+      :accomplishment => accomplishment,
+      :user => self
+    }).tap(&:save) if allowed_to_plus_one? accomplishment
+  end
 end
