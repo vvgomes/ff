@@ -107,7 +107,16 @@ describe User do
     context 'an accomplishment he is not involved' do
       let(:author) { build(:user) }
       let(:receiver) { build(:user) }
-      it { should be_allowed_to_plus_one accomplishment }
+      
+      context 'giving +1 for the first time' do
+        it { should be_allowed_to_plus_one accomplishment }
+      end
+
+      context 'giving +1 again' do
+        let(:from_leo) { build(:plus_one, :accomplishment => accomplishment, :user => subject) }
+        before { accomplishment.plus_ones << from_leo }
+        it { should_not be_allowed_to_plus_one accomplishment }
+      end
     end
   end
 

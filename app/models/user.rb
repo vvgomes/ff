@@ -60,7 +60,9 @@ class User < ActiveRecord::Base
   end
 
   def allowed_to_plus_one? accomplishment
-    accomplishment.poster != self &&  accomplishment.receiver != self
+    accomplishment.poster != self &&
+    accomplishment.receiver != self &&
+    !accomplishment.plus_ones.map(&:user).include?(self)
   end
 
   def plus_one(accomplishment)
