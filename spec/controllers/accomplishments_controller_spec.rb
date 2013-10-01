@@ -1,9 +1,6 @@
 describe AccomplishmentsController do
   let(:user) { create :user }
-
-  before do
-    sign_in user
-  end
+  before { sign_in user }
 
   describe '#create' do
     let(:poster_id) { user.id }
