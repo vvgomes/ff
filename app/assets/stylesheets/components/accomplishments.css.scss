@@ -172,9 +172,11 @@
       top: 68px;
     }
 
-    //&:hover .plus-one {
-   //   opacity: 1;
-    //}*/
+    .plus-one:disabled {
+      color: $color-green;
+      background-color: rgba(white, 0.3);
+      box-shadow: none;
+    }
   }
 
   .pagination {
