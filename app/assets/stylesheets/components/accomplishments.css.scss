@@ -175,11 +175,11 @@
     }
 
     .plus-one:disabled {
-      //color: white;
-      //border-color: $color-green;
-      //background-color: rgba($color-green, 0.5);
+      color: white;
+      background-color: rgba($color-green, 0.5);
+      border-color: rgba($color-green, 0.7);
       box-shadow: none;
-      opacity: 0.5;
+      text-shadow: none;
       cursor: default;
     }
 
