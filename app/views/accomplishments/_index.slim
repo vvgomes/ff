@@ -15,7 +15,9 @@ section#latest-accomplishments
           p itemprop='description' 
             = truncate(auto_link_hashtags(acc.description, :hashtag_url_base=>'/?tag='), length: 310).html_safe
 
-          = button_to '+1', accomplishment_plus_ones_path(acc), :method => :post, :class => 'plus-one', :disabled => !current_user.allowed_to_plus_one?(acc)
+          = button_to '+1', accomplishment_plus_ones_path(acc), 
+            :method => :post, :class => 'plus-one', 
+            :disabled => !current_user.allowed_to_plus_one?(acc)
 
           time itemprop='datePublished' datetime=acc.updated_at.utc.iso8601
             span.day = acc.updated_at.day
@@ -23,7 +25,8 @@ section#latest-accomplishments
             span.year = acc.updated_at.year
 
           - if current_user.allowed_to_delete?(acc)
-            = button_to '✕', acc, :method => :delete, :confirm => 'Are you sure?', :class => 'remove'
+            = button_to '✕', acc, :method => :delete, 
+              :confirm => 'Are you sure?', :class => 'remove'
 
 
           = link_to "by #{acc.poster.username}", user_path(acc.poster.username), :itemprop => 'author'
