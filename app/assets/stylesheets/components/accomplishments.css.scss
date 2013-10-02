@@ -177,6 +177,39 @@
       background-color: rgba(white, 0.3);
       box-shadow: none;
     }
+
+    span.plus-one-counter {
+      $bg-color: white;
+      position: absolute;
+      top: 72px;
+      left: 34px;
+      width: 26px;
+      height: 14px;
+      font-size: 11px;
+      font-family: monospace;
+      text-align: center;
+      color: black;
+      background-color: $bg-color;
+      border: solid $color-green 1px;
+      border-radius: 5px;
+      line-height: 14px;
+
+      &:before {
+        content: '';
+        display: block;
+        width: 2px;
+        height: 2px;
+        border: 1px solid transparent;
+        border-left-color: $color-green;
+        border-bottom-color: $color-green;
+        position: absolute;
+        left: -2px;
+        top: 72%;
+        margin-top: -5px;
+        -webkit-transform: rotateZ(45deg);
+        background-color: $bg-color;
+      }
+    }
   }
 
   .pagination {
