@@ -30,7 +30,8 @@ section#latest-accomplishments
             = button_to '✕', acc, :method => :delete, 
               :confirm => 'Are you sure?', :class => 'remove'
 
-
-          = link_to "by #{acc.poster.username}", user_path(acc.poster.username), :itemprop => 'author'
+          span itemprop='author'
+            | by 
+            = link_to acc.poster.username, user_path(acc.poster.username)
 
   = will_paginate @accomplishments
