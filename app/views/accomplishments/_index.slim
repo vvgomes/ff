@@ -9,7 +9,8 @@ section#latest-accomplishments
         li.accomplishment itemscope='' itemtype='http://schema.org/Review'
 
           div itemprop='itemReviewed' itemscope='' itemtype='http://schema.org/Person'
-            = gravatar_image_tag(acc.receiver.email, itemprop:'image', alt: acc.receiver.username, gravatar: { secure: true, size: 50 })
+            = gravatar_image_tag(acc.receiver.email, itemprop:'image',
+              alt: acc.receiver.username, gravatar: { secure: true, size: 50 })
             = link_to acc.receiver.username, user_path(acc.receiver.username), :itemprop => 'name'
 
           p itemprop='description' 
@@ -18,6 +19,7 @@ section#latest-accomplishments
           = button_to '+1', accomplishment_plus_ones_path(acc), 
             :method => :post, :class => 'plus-one', 
             :disabled => !current_user.allowed_to_plus_one?(acc)
+          span.plus-one-counter = acc.plus_ones.count
 
           time itemprop='datePublished' datetime=acc.updated_at.utc.iso8601
             span.day = acc.updated_at.day
