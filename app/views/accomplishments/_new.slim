@@ -1,8 +1,20 @@
 = form_for(@accomplishment) do |f|
-  p Congratulate
-    #{f.collection_select :receiver_id, current_user.peers, :id, :username, {:include_blank => '[your peer]', :selected=>@user.id}, { :required => true, :autofocus => (@user == current_user) } }
-    for:
+  p#congratulate
+    | Congratulate 
+    = f.text_field :receiver_username,
+      :placeholder => 'your peer',
+      :required => true,
+      :maxlength => '8',
+      :autofocus => (@user == current_user),
+      :value => @user == current_user ? '' : @user.username
+    | for:
 
-  = f.text_area :description, :placeholder => 'doing something awesome…', :required => true, :maxlength => description_max_length, :autofocus => (@user != current_user)
+  = f.text_area :description,
+    :placeholder => 'doing something awesome…',
+    :required => true,
+    :maxlength => description_max_length,
+    :autofocus => (@user != current_user)
 
   p #{f.submit :value => 'Feedback it!'}
+
+input#users type='hidden' value="#{current_user.peers.map(&:username).join(',')}"

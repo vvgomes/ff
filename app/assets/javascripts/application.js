@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require_tree .
 //= require uservoice
+//= require typeahead.min
+
+$(document).ready(function() {
+  $('#accomplishment_receiver_username').typeahead({
+    name: 'username',
+    local: $('input#users').val().split(',')
+  });
+});

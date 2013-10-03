@@ -2,7 +2,7 @@ class AccomplishmentsController < ApplicationController
   def create
     raw = params[:accomplishment]
     description = raw[:description]
-    receiver = User.find_by_id(raw[:receiver_id])
+    receiver = User.where(:username => raw[:receiver_username]).first
     @accomplishment = current_user.report_accomplishment(description, receiver)
     if @accomplishment.valid?
       Notifier.accomplishment(@accomplishment).deliver

@@ -12,7 +12,7 @@ describe AccomplishmentsController do
     context 'a valid accomplishment' do
       let(:attrs) {{
         :description => 'fixed build',
-        :receiver_id => receiver.id
+        :receiver_username => receiver.username
       }}
 
       before { post :create, :accomplishment => attrs }

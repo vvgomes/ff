@@ -13,30 +13,28 @@
     @include text-area;
   }
 
-  #accomplishment_receiver_id {
-    width: 90px;
+  #congratulate {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .twitter-typeahead {
     margin-left: 5px;
     margin-right: 5px;
+
+    input {
+      width: 70px;
+    }
+
+    .tt-dropdown-menu {
+      color: black;
+      background-color: white;
+      font-family: sans-serif;
+    }
   }
 
   input[type=submit] {
     float: right;
-  }
-
-  select {
-    height: 35px;
-    outline: none;
-    font-size: 13px;
-    background: url($dropdown-arrow) no-repeat right transparent;
-    @include appearance(none);
-    border: none;
-    font-family: $body-font-family;
-    color: white;
-    cursor: pointer;
-
-    &:hover {
-      color: $color-pink;
-    }
   }
 }
 
