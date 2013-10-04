@@ -37,6 +37,7 @@ describe ApplicationController do
 
       it { should respond_with(:success) }
       it { assigns(:user).should == subject.current_user }
+      it { assigns(:tag).should == 'gap' }
       it { assigns(:accomplishments).should =~ from_gap }
       it { assigns(:accomplishment).should be_a_new Accomplishment }
       it { should render_template :index }
