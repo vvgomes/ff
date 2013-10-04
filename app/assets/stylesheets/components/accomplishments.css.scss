@@ -51,6 +51,13 @@
 #latest-accomplishments {
   min-height: 250px;
 
+  #tag-name {
+    font-size: 200%;
+    margin-left: 20px;
+    color: $color-green;
+    text-shadow: 1px 1px 1px rgba(white, 0.9);
+  }
+
   #forever-alone {
     display: block;
     margin: auto;

@@ -1,5 +1,8 @@
 section#latest-accomplishments
   h1 Latest Accomplishments
+  - if @tag
+    span#tag-name ##{@tag}
+
   = will_paginate @accomplishments
   ul
     - if @accomplishments.empty?
