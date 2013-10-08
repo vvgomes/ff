@@ -15,6 +15,7 @@
 //= require_tree .
 //= require uservoice
 //= require typeahead.min
+//= require modal
 
 $(document).ready(function() {
   $('#accomplishment_receiver_username').typeahead({
