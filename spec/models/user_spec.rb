@@ -18,6 +18,20 @@ describe User do
     its(:username) { should == 'leo' }
   end
 
+  describe '#gravatar' do
+    let(:md5) { '59fb9d870952d132aea03d7b4919b179' }
+
+    context 'default' do
+      its(:gravatar) { should == 'http://www.gravatar.com/avatar/'+md5+'?s=' }
+    end
+
+    context 'custom size' do
+      specify do
+        subject.gravatar(50).should == 'http://www.gravatar.com/avatar/'+md5+'?s=50'
+      end
+    end
+  end
+
   describe '#report_accomplishment' do
     let(:leo) { build :user}
     let(:mathias) { build :user }
