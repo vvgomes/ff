@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :username
   validates_presence_of :username
+  before_save { |u| u.username = u.username.downcase }
 
   devise :cas_authenticatable, :registerable, :trackable
 
