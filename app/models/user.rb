@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  GRAVATAR = 'http://www.gravatar.com/avatar/%{md5}?s=%{size}'
-
   has_many :posts, 
     :foreign_key => 'poster_id', 
     :class_name => Accomplishment
@@ -28,10 +26,6 @@ class User < ActiveRecord::Base
 
   def email
     "#{username}@thoughtworks.com"
-  end
-
-  def gravatar(size=nil)
-    GRAVATAR % { :md5 => Digest::MD5.hexdigest(email), :size => size.to_s }
   end
 
   def report_accomplishment(description, receiver)
