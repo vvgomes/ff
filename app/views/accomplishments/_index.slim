@@ -22,7 +22,9 @@ section#latest-accomplishments
           = button_to '+1', accomplishment_plus_ones_path(acc), 
             :method => :post, :class => 'plus-one', 
             :disabled => !current_user.allowed_to_plus_one?(acc)
-          span.plus-one-counter = acc.plus_ones.count
+
+          a href='#'
+            span.plus-one-counter = acc.plus_ones.count
 
           time itemprop='datePublished' datetime=acc.updated_at.utc.iso8601
             span.day = acc.updated_at.day
