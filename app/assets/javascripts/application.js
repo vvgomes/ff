@@ -18,7 +18,14 @@
 
 $(document).ready(function() {
   $('#accomplishment_receiver_username').typeahead({
-    name: 'username',
-    local: $('input#users').val().split(',')
+    name: 'username', local: $('input#users').val().split(',')
+  });
+
+  $('.plus-one-givers-link').on('click', function() {
+    $('.plus-one-givers[data-acc='+$(this).data('acc')+']').toggle();
+  });
+
+  $('.plus-one-givers').on('mouseleave', function() {
+    $(this).hide();
   });
 });

@@ -24,8 +24,16 @@ section#latest-accomplishments
             :disabled => !current_user.allowed_to_plus_one?(acc)
 
           - if acc.plus_ones.count > 0
-            a href='#'
+            a.plus-one-givers-link data-acc='#{acc.id}'
               span.plus-one-counter = acc.plus_ones.count
+            section.plus-one-givers data-acc='#{acc.id}'
+              ul
+                - acc.plus_ones.each do |p1|
+                  li
+                    = link_to user_path(p1.user.username) do
+                      = gravatar_image_tag(p1.user.email,
+                        alt: p1.user.username, gravatar: { secure: true, size: 20 })
+                      span = p1.user.username
           - else
             span.plus-one-counter = acc.plus_ones.count
 
