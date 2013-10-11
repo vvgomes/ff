@@ -51,6 +51,18 @@
     text-shadow: 1px 1px 1px rgba(white, 0.2);
   }
 
+  #tag-list {
+    margin: 10px;
+    margin-right: 0;
+    text-align: right;
+
+    a {
+      color: $article-background-color;
+      margin-right: 8px;
+      text-decoration: underline;
+    }
+  }
+
   #suggestion_description {
     @include transition(height 100ms);
     @include text-area;

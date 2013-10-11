@@ -1,9 +1,14 @@
 div itemscope='' itemtype='http://schema.org/Person'
-  = gravatar_image_tag(@user.email, itemprop:'image', alt: @user.username, gravatar: { secure: true })
+  = gravatar_image_tag(@user.email, itemprop:'image',
+    alt: @user.username, gravatar: { secure: true })
   = link_to user_path(@user.username) do
     span itemprop='name' = @user.username
   span#total = @user.score
   span#unit accomplishment#{@user.score == 1 ? '' : 's'}
+
+  p#tag-list
+    - @user.tags.map{|t|'#'+t}.each do |tag|
+      = truncate(auto_link_hashtags(tag, :hashtag_url_base=>'/?tag='), length: 310).html_safe
 
   - if @user != current_user
     = render 'suggestions/new'
