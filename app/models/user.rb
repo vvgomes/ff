@@ -72,4 +72,8 @@ class User < ActiveRecord::Base
       :user => self
     }).tap(&:save) if allowed_to_plus_one? accomplishment
   end
+
+  def tags
+    (accomplishments + posts).map(&:tag_list).flatten
+  end
 end

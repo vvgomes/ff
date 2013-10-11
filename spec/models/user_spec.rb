@@ -146,7 +146,16 @@ describe User do
         subject.plus_one(fixed_build)
       end
     end
+  end
 
+  describe '#tags' do
+    let(:received) { build(:accomplishment, :tag_list => ['gap']) }
+    let(:posted) { build(:accomplishment, :tag_list => ['lms']) }
+
+    before { subject.stub(:accomplishments).and_return [received] }
+    before { subject.stub(:posts).and_return [posted] }
+
+    its(:tags) { should == ['gap', 'lms'] }
   end
 
 end
