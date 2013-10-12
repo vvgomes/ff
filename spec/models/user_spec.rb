@@ -150,7 +150,7 @@ describe User do
 
   describe '#tags' do
     let(:received) { build(:accomplishment, :tag_list => ['gap']) }
-    let(:posted) { build(:accomplishment, :tag_list => ['lms']) }
+    let(:posted) { build(:accomplishment, :tag_list => ['lms', 'gap']) }
 
     before { subject.stub(:accomplishments).and_return [received] }
     before { subject.stub(:posts).and_return [posted] }

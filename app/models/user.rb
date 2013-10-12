@@ -74,6 +74,6 @@ class User < ActiveRecord::Base
   end
 
   def tags
-    (accomplishments + posts).map(&:tag_list).flatten
+    (accomplishments + posts).map(&:tag_list).flatten.uniq
   end
 end
