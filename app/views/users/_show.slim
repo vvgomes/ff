@@ -7,8 +7,8 @@ div itemscope='' itemtype='http://schema.org/Person'
   span#unit accomplishment#{@user.score == 1 ? '' : 's'}
 
   p#tag-list
-    - @user.tags.map{|t|'#'+t}.each do |tag|
-      = truncate(auto_link_hashtags(tag, :hashtag_url_base=>'/?tag='), length: 310).html_safe
+    = auto_link_hashtags(@user.tags.map{|t|'#'+t}.join('  '),
+      :hashtag_url_base=>'/?tag=').html_safe
 
   - if @user != current_user
     = render 'suggestions/new'
