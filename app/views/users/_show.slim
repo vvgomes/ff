@@ -7,7 +7,7 @@ div itemscope='' itemtype='http://schema.org/Person'
   span#unit accomplishment#{@user.score == 1 ? '' : 's'}
 
   p#tag-list
-    = auto_link_hashtags(@user.tags.map{|t|'#'+t}.join('  '),
+    = auto_link_hashtags(@user.tags.map{|t|'#'+t}.join(' '),
       :hashtag_url_base=>'/?tag=').html_safe
 
   - if @user != current_user
