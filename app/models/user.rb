@@ -76,4 +76,13 @@ class User < ActiveRecord::Base
   def tags
     (accomplishments + posts).map(&:tag_list).flatten.uniq
   end
+
+  def accomplishment_stats
+    counts = 12.times.inject({}){ |h, n| h.merge(n.months.ago.strftime('%b')=> 0) }
+    accomplishments.latest.limit(12).each do |a|
+      counts[a.created_at.strftime('%b')] += 1
+    end
+    counts.to_a.reverse
+  end
 end
+
