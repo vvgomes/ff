@@ -17,8 +17,10 @@ html
         'Signed in as
           #{current_user.username} |
           #{link_to 'Sign out', destroy_user_session_path, :class => 'action'}
-    
-    = yield
+
+    aside#new-accomplishment = yield :new_accomplishment
+    aside#profile = yield :profile
+    article = yield
 
     footer
       p ThoughtWorks - #{APP_VERSION}
