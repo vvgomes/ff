@@ -15,10 +15,15 @@
 //= require_tree .
 //= require uservoice
 //= require typeahead.min
+//= require highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/adapters/standalone-framework
+//= require highcharts/themes/grid
 
 $(document).ready(function() {
-  $('#accomplishment_receiver_username').typeahead({
-    name: 'username', local: $('input#users').val().split(',')
+  var usersInput = $('input#users');
+  (usersInput.length) && $('#accomplishment_receiver_username').typeahead({
+    name: 'username', local: usersInput.val().split(',')
   });
 
   $('.plus-one-givers-link').on('click', function() {
@@ -28,4 +33,27 @@ $(document).ready(function() {
   $('.plus-one-givers').on('mouseleave', function() {
     $(this).hide();
   });
+
+  buildAccomplishmentChart();
 });
+
+function buildAccomplishmentChart() {
+  var view = $('#accomplishments-chart');
+  if(!view) return;
+
+  var data = eval(view.data('counts'));
+  var categories = data.map(function(e) { return e.shift(); });
+
+  view.highcharts({
+    title: { text: 'Accomplishment last 12 months' },
+    chart: { type: 'line', zoomType: 'x' },
+    xAxis: { categories: categories },
+    yAxis: { title: { text: 'Count' }, min: 0, allowDecimals: false },
+    series:[ { name: 'Accomplishments', data: data} ],
+    credits: { enabled: false },
+    plotOptions: {
+      line: { marker: { enabled: false }, connectNulls: true },
+      series: { lineWidth: 5 }
+    }
+  });
+}
