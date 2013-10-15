@@ -8,5 +8,7 @@ describe StatsController do
     before { get :index, :username => 'mgusso' }
     it { should respond_with 200 }
     it { assigns(:user).should == mathias }
+    it { assigns(:accomplishment).should be_a_new Accomplishment }
+    it { assigns(:suggestion).should be_a_new Suggestion }
   end
 end 
