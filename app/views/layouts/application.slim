@@ -18,9 +18,7 @@ html
           #{current_user.username} |
           #{link_to 'Sign out', destroy_user_session_path, :class => 'action'}
     
-    aside#new-accomplishment = yield :new_accomplishment
-    aside#profile = yield :profile
-    article = yield
+    = yield
 
     footer
       p ThoughtWorks - #{APP_VERSION}

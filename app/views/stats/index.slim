@@ -1,0 +1,3 @@
+article#stats
+  h1 STATS
+  div#accomplishments-chart style='min-width: 310px; height: 400px; margin: 0 auto' data-counts=raw(@user.accomplishment_stats.to_json).gsub('"', "'").html_safe
