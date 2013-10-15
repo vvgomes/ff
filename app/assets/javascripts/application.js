@@ -45,7 +45,7 @@ function buildAccomplishmentChart() {
   var categories = data.map(function(e) { return e.shift(); });
 
   view.highcharts({
-    title: { text: 'Accomplishment last 12 months' },
+    title: { text: 'Accomplishments last 12 months' },
     chart: { type: 'line', zoomType: 'x' },
     xAxis: { categories: categories },
     yAxis: { title: { text: 'Count' }, min: 0, allowDecimals: false },
