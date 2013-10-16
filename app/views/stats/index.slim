@@ -6,4 +6,35 @@
 
 article#stats
   h1 STATS
-  div#accomplishments-chart style='min-width: 310px; height: 400px; margin: 0 auto' data-counts=raw(@user.accomplishment_stats.to_json).gsub('"', "'").html_safe
+      
+  table
+    caption Feedback Received
+    tr
+      td.attr Accomplishments
+      td.icon ☆
+      td.value = @user.accomplishments.count
+    tr
+      td.attr +1's
+      td.icon ☺
+      td.value = @user.received_plus_ones.count
+    tr
+      td.attr Suggestions
+      td.icon ✌
+      td.value = @user.received_suggestions.count
+
+  table
+    caption Feedback Given
+    tr
+      td.attr Accomplishments
+      td.icon ☆
+      td.value = @user.posts.count
+    tr
+      td.attr +1's
+      td.icon ☺
+      td.value = @user.plus_ones.count
+    tr
+      td.attr Suggestions
+      td.icon ✌
+      td.value = @user.sent_suggestions.count
+
+  div#trends-chart style='min-width: 310px; height: 400px; margin: 0 auto' data-accomplishments=raw(@accomplishment_trends).gsub('"', "'").html_safe

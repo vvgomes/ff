@@ -77,6 +77,10 @@ class User < ActiveRecord::Base
     (accomplishments + posts).map(&:tag_list).flatten.uniq
   end
 
+  def received_plus_ones
+    PlusOne.where(:accomplishment_id => Accomplishment.where(:receiver_id=>id))
+  end
+
   def accomplishment_trends
     counts = 12.times.inject({}){ |h, n| h.merge(n.months.ago.strftime('%b')=> 0) }
     accomplishments.latest.limit(12).each do |a|

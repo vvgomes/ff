@@ -38,14 +38,14 @@ $(document).ready(function() {
 });
 
 function buildAccomplishmentChart() {
-  var view = $('#accomplishments-chart');
+  var view = $('#trends-chart');
   if(!view) return;
 
-  var data = eval(view.data('counts'));
+  var data = eval(view.data('accomplishments'));
   var categories = data.map(function(e) { return e.shift(); });
 
   view.highcharts({
-    title: { text: 'Accomplishments last 12 months' },
+    title: { text: 'Monthly Trends' },
     chart: { type: 'line', zoomType: 'x' },
     xAxis: { categories: categories },
     yAxis: { title: { text: 'Count' }, min: 0, allowDecimals: false },
