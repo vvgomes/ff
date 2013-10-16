@@ -41,19 +41,22 @@ function buildAccomplishmentChart() {
   var view = $('#trends-chart');
   if(!view) return;
 
-  var data = eval(view.data('accomplishments'));
-  var categories = data.map(function(e) { return e.shift(); });
+  var accData = eval(view.data('accomplishments'));
+  var postData = eval(view.data('posts'));
+  var categories = accData.map(function(e) { return e.shift(); });
 
   view.highcharts({
     title: { text: 'Monthly Trends' },
     chart: { type: 'line', zoomType: 'x' },
     xAxis: { categories: categories },
     yAxis: { title: { text: 'Count' }, min: 0, allowDecimals: false },
-    series:[ { name: 'Accomplishments', data: data} ],
-    credits: { enabled: false },
+    series:[ 
+      { name: 'Accomplishments posted', data: postData, color: 'blue' },
+      { name: 'Accomplishments received', data: accData, color: 'green' }
+    ],
     plotOptions: {
       line: { marker: { enabled: false }, connectNulls: true },
-      series: { lineWidth: 5 }
+      series: { lineWidth: 2 }
     }
   });
 }
