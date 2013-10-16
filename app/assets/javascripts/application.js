@@ -56,7 +56,7 @@ function buildAccomplishmentChart() {
     ],
     plotOptions: {
       line: { marker: { enabled: false }, connectNulls: true },
-      series: { lineWidth: 2 }
+      series: { lineWidth: 3 }
     }
   });
 }
