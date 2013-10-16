@@ -3,6 +3,7 @@ class StatsController < ApplicationController
     @user = User.find_by_username(params[:username])
 
     @accomplishment_trends = @user.accomplishment_trends.to_json
+    @post_trends = @user.post_trends.to_json
 
     @accomplishment = Accomplishment.new
     @suggestion = Suggestion.new # shouldnt be here
