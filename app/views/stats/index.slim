@@ -37,4 +37,4 @@ article#stats
       td.icon ✌
       td.value = @user.sent_suggestions.count
 
-  div#trends-chart style='min-width: 310px; height: 400px; margin: 0 auto' data-accomplishments=raw(@accomplishment_trends).gsub('"', "'").html_safe
+  div#trends-chart style='min-width: 310px; height: 400px; margin: 0 auto' data-accomplishments=raw(@accomplishment_trends).gsub('"', "'").html_safe data-posts=raw(@post_trends).gsub('"', "'").html_safe
