@@ -77,6 +77,24 @@ class User < ActiveRecord::Base
     (accomplishments + posts).map(&:tag_list).flatten.uniq
   end
 
+  def fans
+    User.connection.execute("
+      select users.id from users, accomplishments 
+      where accomplishments.receiver_id = #{id} 
+      and accomplishments.poster_id = users.id 
+      group by users.id order by count(users.id) desc limit 3
+    ").values.flatten.map{ |id| User.find(id) }
+  end
+
+  def idols
+    User.connection.execute("
+      select users.id from users, accomplishments 
+      where accomplishments.poster_id = #{id} 
+      and accomplishments.receiver_id = users.id 
+      group by users.id order by count(users.id) desc limit 3
+    ").values.flatten.map{ |id| User.find(id) }
+  end
+
   def received_plus_ones
     PlusOne.where(:accomplishment_id => Accomplishment.where(:receiver_id=>id))
   end
