@@ -69,7 +69,7 @@ function buildTagsChart() {
 
   view.highcharts({
     chart: { plotBackgroundColor: null, plotBorderWidth: null, plotShadow: false },
-    title: { text: 'Accomplishments by #tag' },
+    title: { text: 'Accomplishments by Tag' },
     tooltip: { pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>' },
     plotOptions: {
       pie: {
