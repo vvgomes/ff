@@ -83,7 +83,7 @@ class User < ActiveRecord::Base
       where accomplishments.receiver_id = #{id} 
       and accomplishments.poster_id = users.id 
       group by users.id order by count(users.id) desc limit 3
-    ").values.flatten.map{ |id| User.find(id) }
+    ").values.flatten.uniq.map{ |id| User.find(id) }
   end
 
   def idols
@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
       where accomplishments.poster_id = #{id} 
       and accomplishments.receiver_id = users.id 
       group by users.id order by count(users.id) desc limit 3
-    ").values.flatten.map{ |id| User.find(id) }
+    ").values.flatten.uniq.map{ |id| User.find(id) }
   end
 
   def received_plus_ones
