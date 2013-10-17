@@ -97,15 +97,9 @@ class User < ActiveRecord::Base
     counts.to_a.reverse
   end
 
-  def accomplishment_tag_counts
+  def tag_counts
     accomplishments.map(&:tag_list).flatten.uniq.inject({}) do |h, tag|
       h.merge(tag => accomplishments.tagged_with(tag).count)
-    end.to_a
-  end
-
-  def post_tag_counts
-    posts.map(&:tag_list).flatten.uniq.inject({}) do |h, tag|
-      h.merge(tag => posts.tagged_with(tag).count)
     end.to_a
   end
 end
