@@ -100,13 +100,13 @@ class User < ActiveRecord::Base
   def accomplishment_tag_counts
     accomplishments.map(&:tag_list).flatten.uniq.inject({}) do |h, tag|
       h.merge(tag => accomplishments.tagged_with(tag).count)
-    end
+    end.to_a
   end
 
   def post_tag_counts
     posts.map(&:tag_list).flatten.uniq.inject({}) do |h, tag|
       h.merge(tag => posts.tagged_with(tag).count)
-    end
+    end.to_a
   end
 end
 
