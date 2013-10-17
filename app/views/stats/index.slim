@@ -7,7 +7,7 @@
 article#stats
   h1 STATS
       
-  article#numbers
+  article.summary
     table
       caption Feedback Received
       tr
@@ -37,6 +37,37 @@ article#stats
         td.attr Suggestions
         td.icon ✌
         td.value = @user.sent_suggestions.count
+
+  /hr
+
+  article.summary
+    table
+      caption Top Fans
+      - fans = @user.fans
+      - if fans.empty?
+        tr
+          td.sad ☹ No Fans
+      - fans.each do |fan|
+        tr
+          td.gravatar
+            = link_to user_path(fan.username) do
+              = gravatar_image_tag(fan.email, alt: fan.username,
+                gravatar: { secure: true, size: 30 })
+          td.username = fan.username
+
+    table
+      caption Top Idols
+      - idols = @user.idols
+      - if idols.empty?
+        tr
+          td.sad ☹ No Idols
+      - idols.each do |idol|
+        tr
+          td.gravatar
+            = link_to user_path(idol.username) do
+              = gravatar_image_tag(idol.email, alt: idol.username,
+                gravatar: { secure: true, size: 30 })
+          td.username = idol.username
 
   div#trends-chart.chart style='min-width: 310px; height: 400px; margin: 0 auto' data-accomplishments=raw(@accomplishment_trends).gsub('"', "'").html_safe data-posts=raw(@post_trends).gsub('"', "'").html_safe
 
