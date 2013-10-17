@@ -46,13 +46,13 @@ function buildAccomplishmentChart() {
   var categories = accData.map(function(e) { return e.shift(); });
 
   view.highcharts({
-    title: { text: 'Monthly Trends' },
+    title: { text: 'Monthly Accomplishment Trends' },
     chart: { type: 'line', zoomType: 'x' },
     xAxis: { categories: categories },
     yAxis: { title: { text: 'Count' }, min: 0, allowDecimals: false },
     series:[ 
-      { name: 'Accomplishments posted', data: postData, color: 'blue' },
-      { name: 'Accomplishments received', data: accData, color: 'green' }
+      { name: 'Posted', data: postData, color: 'blue' },
+      { name: 'Received', data: accData, color: 'green' }
     ],
     plotOptions: {
       line: { marker: { enabled: false }, connectNulls: true },
