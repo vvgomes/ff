@@ -35,6 +35,7 @@ $(document).ready(function() {
   });
 
   buildAccomplishmentChart();
+  buildTagsChart();
 });
 
 function buildAccomplishmentChart() {
@@ -58,5 +59,30 @@ function buildAccomplishmentChart() {
       line: { marker: { enabled: false }, connectNulls: true },
       series: { lineWidth: 3 }
     }
+  });
+}
+
+function buildTagsChart() {
+  var view = $('#tags-chart');
+  if(!view) return;
+  var data = eval(view.data('counts'));
+
+  view.highcharts({
+    chart: { plotBackgroundColor: null, plotBorderWidth: null, plotShadow: false },
+    title: { text: 'Accomplishments by #tag' },
+    tooltip: { pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>' },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          color: '#000000',
+          connectorColor: '#000000',
+          format: '<b>#{point.name}</b>: {point.percentage:.1f} %'
+        }
+      }
+    },
+    series: [{ type: 'pie', name: 'Accomplishments', data: data }]
   });
 }
