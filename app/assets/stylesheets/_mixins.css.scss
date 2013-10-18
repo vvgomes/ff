@@ -28,7 +28,8 @@
 
 @mixin stripped-background($color) {
   background-color: $color;
-  @include background-image(linear-gradient(0deg, transparent 2px, rgba(black, .04) 1px));
+  //@include background-image(linear-gradient(0deg, transparent 2px, rgba(black, .04) 1px));
+  background-image: -webkit-linear-gradient(0deg, transparent 2px, rgba(0, 0, 0, 0.04) 1px);
   background-size: 3px;
 }
 
