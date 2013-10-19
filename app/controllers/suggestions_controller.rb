@@ -6,7 +6,7 @@ class SuggestionsController < ApplicationController
     @suggestion = current_user.suggest(description, receiver)
     if @suggestion.valid?
       Notifier.suggestion(@suggestion).deliver
-      redirect_to user_path(receiver.username), notice: 'Suggestion sent!'
+      redirect_to user_path(receiver.username), notice: 'Suggestion sent'
     else
       redirect_to user_path(receiver.username)
     end

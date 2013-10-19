@@ -16,7 +16,7 @@ describe SuggestionsController do
 
       it { should respond_with 302 }
       it { should redirect_to user_path(receiver.username) }
-      it { should set_the_flash.to 'Suggestion sent!' }
+      it { should set_the_flash.to 'Suggestion sent' }
       it { assigns(:suggestion).should be_valid }
       specify { Notifier.deliveries.last.to.should == [receiver.email] }
     end

@@ -19,7 +19,7 @@ describe AccomplishmentsController do
 
       it { should respond_with 302 }
       it { should redirect_to path }
-      it { should set_the_flash.to 'Accomplishment reported!' }
+      it { should set_the_flash.to 'Accomplishment reported' }
       specify { Notifier.deliveries.last.to.should == [receiver.email] }
     end
 
@@ -48,6 +48,6 @@ describe AccomplishmentsController do
 
     it { should respond_with 302 }
     it { should redirect_to path }
-    it { should set_the_flash.to 'Accomplishment removed!' }
+    it { should set_the_flash.to 'Accomplishment removed' }
   end
 end

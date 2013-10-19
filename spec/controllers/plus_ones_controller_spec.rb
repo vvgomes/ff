@@ -14,6 +14,6 @@ describe PlusOnesController do
 
     it { should respond_with 302 }
     it { should redirect_to path }
-    it { should set_the_flash.to '+1 given!' }
+    it { should set_the_flash.to '+1 given' }
   end
 end
