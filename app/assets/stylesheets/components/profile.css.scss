@@ -1,3 +1,5 @@
+  @font-face{font-family:"EmojiSymbols";src:url(http://graphemica.com/assets/emoji/EmojiSymbols-Regular-069590448881125043ede0000ac2e029.woff) format("woff");text-decoration:none;font-style:normal}
+
 #profile {
   $width: $max-width / 2;
   @include glass-base(10px);
@@ -59,6 +61,23 @@
 
     a {
       color: $article-background-color;
+      margin-right: 5px;
+    }
+  }
+
+  #stats-link {
+    text-align: right;
+
+    a {
+      color: $color-green;
+      margin-right: 5px;
+      font-size: 18px;
+      //text-decoration: underline;
+    }
+
+    [rel="stats"]:before {
+      font-family: EmojiSymbols;
+      content: '\1F4CA';
       margin-right: 5px;
     }
   }
