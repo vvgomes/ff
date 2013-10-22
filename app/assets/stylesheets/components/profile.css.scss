@@ -63,6 +63,10 @@
       color: $article-background-color;
       margin-right: 5px;
     }
+
+    a:hover {
+      text-decoration: underline;
+    }
   }
 
   #stats-link {
@@ -72,7 +76,10 @@
       color: $color-green;
       margin-right: 5px;
       font-size: 18px;
-      //text-decoration: underline;
+    }
+
+    a:hover {
+      color: $color-light-green;
     }
 
     [rel="stats"]:before {
