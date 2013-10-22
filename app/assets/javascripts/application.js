@@ -36,6 +36,7 @@ $(document).ready(function() {
 
   buildAccomplishmentChart();
   buildTagsChart();
+  buildGivenTagsChart();
 });
 
 function buildAccomplishmentChart() {
@@ -66,6 +67,10 @@ function buildTagsChart() {
   var view = $('#tags-chart');
   if(!view) return;
   var data = eval(view.data('counts'));
+  if(data.length == 0)  {
+    view.remove();
+    return;
+  }
 
   view.highcharts({
     chart: { plotBackgroundColor: null, plotBorderWidth: null, plotShadow: false },
@@ -85,4 +90,33 @@ function buildTagsChart() {
     },
     series: [{ type: 'pie', name: 'Accomplishments', data: data }]
   });
+}
+
+function buildGivenTagsChart() {
+  var view = $('#tags-given-chart');
+  if(!view) return;
+  var data = eval(view.data('counts'));
+  if(data.length == 0)  {
+    view.remove();
+    return;
+  }
+
+  view.highcharts({
+    chart: { plotBackgroundColor: null, plotBorderWidth: null, plotShadow: false },
+    title: { text: 'Posts by Tag' },
+    tooltip: { pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>' },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          color: '#000000',
+          connectorColor: '#000000',
+          format: '<b>#{point.name}</b>: {point.percentage:.1f} %'
+        }
+      }
+    },
+    series: [{ type: 'pie', name: 'Posts', data: data }]
+  }); 
 }
