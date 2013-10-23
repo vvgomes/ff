@@ -13,3 +13,15 @@ task :import => :environment do
   end
   puts 'Done.'
 end
+
+task :import_names => :environment do
+  puts '> Importing names...'
+  JSON.parse(File.read(File.join(Rails.root, 'db', 'everyone.json'))).each do |raw|
+    name = raw['name']
+    username = raw['mail'].split('@').first
+    puts "> #{username} will update with name = #{name}" 
+    u = User.find_by_username(username)
+    u.update_attribute(:name, name) if u
+  end
+  puts 'Done.'
+end
