@@ -249,6 +249,10 @@
         font-family: $body-font-family;
         padding: 5px;
 
+        li + li {
+          margin-top: 5px;
+        }
+
         img {
           border-radius: 3px;
           margin-right: 3px;
