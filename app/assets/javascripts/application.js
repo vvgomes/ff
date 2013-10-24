@@ -26,14 +26,6 @@ $(document).ready(function() {
     name: 'username', local: usersInput.val().split(',')
   });
 
-  $('.plus-one-givers-link').on('mouseover', function() {
-    $('.plus-one-givers[data-acc='+$(this).data('acc')+']').toggle();
-  });
-
-  $('.plus-one-givers').on('mouseleave', function() {
-    $(this).hide();
-  });
-
   buildAccomplishmentChart();
   buildTagsChart();
   buildGivenTagsChart();
