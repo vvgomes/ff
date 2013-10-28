@@ -41,7 +41,7 @@ function buildAccomplishmentChart() {
 
   view.highcharts({
     title: { text: 'Monthly Accomplishment Trends' },
-    chart: { type: 'line', zoomType: 'x' },
+    chart: { type: 'column', zoomType: 'x' },
     xAxis: { categories: categories },
     yAxis: { title: { text: 'Count' }, min: 0, allowDecimals: false },
     series:[ 
