@@ -45,8 +45,8 @@ function buildAccomplishmentChart() {
     xAxis: { categories: categories },
     yAxis: { title: { text: 'Count' }, min: 0, allowDecimals: false },
     series:[ 
-      { name: 'Posted', data: postData, color: 'blue' },
-      { name: 'Received', data: accData, color: 'green' }
+      { name: 'Posted', data: postData, color: '#FFA500' },
+      { name: 'Received', data: accData, color: '#4CC417' }
     ],
     plotOptions: {
       line: { marker: { enabled: false }, connectNulls: true },
