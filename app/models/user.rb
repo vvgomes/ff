@@ -101,7 +101,7 @@ class User < ActiveRecord::Base
 
   def accomplishment_trends
     counts = 12.times.inject({}){ |h, n| h.merge(n.months.ago.strftime('%b')=> 0) }
-    accomplishments.latest.limit(12).each do |a|
+    accomplishments.where("created_at > '#{12.months.ago}'").each do |a|
       counts[a.created_at.strftime('%b')] += 1
     end
     counts.to_a.reverse
@@ -109,7 +109,7 @@ class User < ActiveRecord::Base
 
   def post_trends
     counts = 12.times.inject({}){ |h, n| h.merge(n.months.ago.strftime('%b')=> 0) }
-    posts.latest.limit(12).each do |a|
+    posts.where("created_at > '#{12.months.ago}'").each do |a|
       counts[a.created_at.strftime('%b')] += 1
     end
     counts.to_a.reverse
