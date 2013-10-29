@@ -15,6 +15,6 @@
     :maxlength => description_max_length,
     :autofocus => (@user != current_user)
 
-  p #{f.submit :value => 'Feedback it!'}
+  p #{f.submit :value => 'Broadcast it!'}
 
 input#users type='hidden' value="#{current_user.peers.map(&:username).join(',')}"
