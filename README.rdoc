@@ -1,3 +1,2 @@
-
 = Fast Feedback {<img src="https://secure.travis-ci.org/vvgomes/ff.png"/>}[http://travis-ci.org/vvgomes/ff]
 Spiking for now. We'll come back soon.
