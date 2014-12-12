@@ -1,6 +1,6 @@
 describe Notifier do
-  let(:tc) { build :user, :username => 'tc' }
-  let(:leo) { build :user, :username => 'leo' }
+  let(:tc) { build :user, :email => 'tc@thoughtworks.com' }
+  let(:leo) { build :user, :email => 'leo@thoughtworks.com' }
 
   describe '.accomplishment' do
     subject { Notifier.accomplishment(acc) }

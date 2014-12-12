@@ -19,15 +19,17 @@ class User < ActiveRecord::Base
   has_many :plus_ones
 
   attr_accessible :username
+  attr_accessible :email
+
   validates_presence_of :username
-  before_save { |u| u.username = u.username.downcase }
+
+  before_save :assign_username_or_email
+  before_create :assign_username_or_email
 
   def self.from_omniauth(auth)
     email = auth[:uid]
-    username = email.split('@').first
     where(:email => email).first_or_initialize.tap do |user|
       user.email = email
-      user.username = username
       user.save!
     end
   end
@@ -129,6 +131,16 @@ class User < ActiveRecord::Base
     posts.map(&:tag_list).flatten.uniq.inject({}) do |h, tag|
       h.merge(tag => posts.tagged_with(tag).count)
     end.to_a
+  end
+
+  private
+
+  def assign_username_or_email
+    if self.email
+      self.username = self.email.split('@').first
+    else
+      self.email = self.username + '@thoughtworks.com'
+    end
   end
 end
 

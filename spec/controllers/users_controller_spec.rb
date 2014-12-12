@@ -1,9 +1,6 @@
 describe UsersController do
   let(:user) { create :user }
-
-  before do
-    sign_in user
-  end
+  before { session[:user_id] = user.id }
 
   describe '#index' do
     let(:all) { 2.times.map { build :accomplishment } }

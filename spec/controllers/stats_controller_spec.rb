@@ -1,6 +1,6 @@
 describe StatsController do
   let(:user) { create :user }
-  before { sign_in user }
+  before { session[:user_id] = user.id }
   
   describe '#index' do
     let(:mathias) { double }

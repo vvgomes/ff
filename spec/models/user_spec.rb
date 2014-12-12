@@ -10,14 +10,6 @@ describe User do
   it { should validate_presence_of :username }
   it { should allow_mass_assignment_of :username }
 
-  its(:email) { should == 'leo@thoughtworks.com' }
-
-  context 'before save' do
-    before { subject.username = 'LeO' }
-    before { subject.run_callbacks :save }
-    its(:username) { should == 'leo' }
-  end
-
   describe '#report_accomplishment' do
     let(:leo) { build :user}
     let(:mathias) { build :user }

@@ -1,6 +1,6 @@
 describe PlusOnesController do
   let(:user) { create :user }
-  before { sign_in user }
+  before { session[:user_id] = user.id }
 
   describe '#create' do
     let(:acc) { create(:accomplishment, :poster => user) }
