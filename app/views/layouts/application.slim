@@ -16,7 +16,7 @@ html
       #identity
         'Signed in as
           #{current_user.username} |
-          #{link_to 'Sign out', destroy_user_session_path, :class => 'action'}
+          #{link_to 'Sign out', signout_path, :class => 'action'}
 
     aside#new-accomplishment = yield :new_accomplishment
     aside#profile = yield :profile

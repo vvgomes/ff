@@ -22,10 +22,14 @@ class User < ActiveRecord::Base
   validates_presence_of :username
   before_save { |u| u.username = u.username.downcase }
 
-  devise :cas_authenticatable, :registerable, :trackable
-
-  def email
-    "#{username}@thoughtworks.com"
+  def self.from_omniauth(auth)
+    email = auth[:uid]
+    username = email.split('@').first
+    where(:email => email).first_or_initialize.tap do |user|
+      user.email = email
+      user.username = username
+      user.save!
+    end
   end
 
   def report_accomplishment(description, receiver)
