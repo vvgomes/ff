@@ -12,6 +12,8 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'will_paginate', '~> 3.0.0'
 gem 'twitter-text'
 gem 'highcharts-rails', '~> 3.0.0'
+gem 'omniauth'
+gem 'omniauth-saml'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
