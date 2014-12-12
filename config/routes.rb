@@ -1,5 +1,6 @@
 FF::Application.routes.draw do
-  devise_for :users
+  resources :users, :only => :index
+
   resources :accomplishments do
     resources :plus_ones
   end
