@@ -53,7 +53,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.0.1)
       i18n (~> 0.4)
-    ffi (1.1.5)
+    ffi (1.10.0)
     formtastic (2.2.1)
       actionpack (>= 3.0)
     gravatar_image_tag (1.1.3)
